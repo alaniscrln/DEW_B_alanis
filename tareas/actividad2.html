@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ACTIVIDAD 2</title>
+</head>
+<body>
+
+<!--
+   a) ¿Qué hace el sgt códgo? ¿Para q se utiliza?
+  
+
+    <script type="text/javascript">
+  //  alert(typeof("hola"));
+    </script>
+    
+ --> 
+<!--
+    b) Indica el valor que genera las siguientes expresiones y el tipo de datos de los mismos
+
+-->
+<!--
+<script type="text/javascript">
+console.log("a");
+console.log(typeof(2 > 3 + 2)); //Tipo: boolean, Valor: false
+console.log(2 > 3 + 2);
+
+console.log("b");
+console.log(typeof(1 + false + 3.5)); //Tipo: number , Valor: 4.5
+console.log(1 + false + 3.5);
+
+console.log("c");
+console.log(typeof(4 * true + 2)); //Tipo: number , Valor: 6
+console.log(4 * true + 2);
+
+console.log("d");
+console.log(typeof(5 / 0)); //Tipo: number, Valor: infinity
+console.log(5 / 0);
+
+console.log("e");
+console.log(typeof(10 > 2 > 0)); //Tipo: boolean, Valor: true
+console.log(10 > 2 > 0);
+
+console.log("f");
+console.log(typeof(15 < 3 * 10)); //Tipo: , Valor: 
+console.log(15 < 3 * 10);
+
+console.log("g");
+//console.log(typeof( 3 * hola + 2)); //Tipo: , Valor: 
+//console.log(3 * hola + 2);
+
+console.log("h");
+console.log(typeof( 5 / "hola")); //Tipo: , Valor:
+console.log(5 / "hola");
+
+console.log("i");
+console.log(typeof( Math.PI * 3^2)); //Tipo: , Valor: 
+console.log(Math.PI * 3^2);
+
+console.log("j");
+console.log(typeof( Math.sqrt(25))); //Tipo: , Valor: 
+console.log(Math.sqrt(25));
+
+console.log("k");
+console.log(typeof( "Tienes" + 2 + "años")); //Tipo: , Valor: 
+console.log("Tienes" + 2 + "años");
+
+
+</script>
+-->    
+
+<!--
+    c) Observa el siguiente código y contesta
+        a. La variable nombre se define como variable local o global?
+           Está definida como local.
+        b. El código tiene un error. ¿Cómo puedo arreglarlo?
+
+-->
+
+<!--
+<script type="text/javascript"> 
+    var nombre = "Pedro";
+    function saludar(nombre) {
+        alert("Hola" + nombre);
+    }
+    alert("usuario: " + nombre);
+    saludar(nombre);
+</script>
+-->
+
+
+<!--
+    d) ¿Qué mostrará la segunda ventana emergente? 
+    Hola Juan
+-->
+
+<!--
+<script type="text/javascript"> 
+    var nombre = "Juan";
+    function saludar() {
+        var nombre = "Pedro";
+        alert("Hola" + nombre);
+    }
+    saludar();
+    alert("usuario: " + nombre);
+</script>
+-->
+
+<!--
+    e) ¿Qué generan los siguientes códigos?
+        a. Sale un string q dice true
+        b. Devuelve un string
+-->
+
+<!--
+<script type="text/javascript"> 
+    //a
+    var result = true;
+    result.toString();
+    //b
+    var llueve = false;
+    llueve += "o true?";
+</script>
+-->
+
+<!--
+    f) ¿Qué valor producirán las siguientes expresiones?
+
+            parseInt("15"); 15
+            parseInt("15.5") 15
+            parseInt(15.5) 15
+            parseInt("true") NaN
+            parseInt(true) NaN
+            parseInt("Pedro") NaN
+            parseInt(15 + "Pedro") 15
+            parseFloat("15.5") 15.5
+            parseFloat(15.5) 15.5
+-->
+    <script type="text/javascript">
+    
+        console.log(parseInt("15"));
+        console.log( parseInt("15.5") );
+        console.log( parseInt(15.5) );
+        console.log( parseInt("true") );
+        console.log( parseInt(true) );
+        console.log( parseInt("Pedro") );
+        console.log( parseInt(15 + "Pedro") );
+        console.log( parseFloat("15.5") );
+        console.log( parseFloat(15.5) );
+    </script>
+
+</body>
+</html>
