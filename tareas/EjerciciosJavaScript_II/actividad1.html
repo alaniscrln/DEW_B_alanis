@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1. Implementar el control de 3 variables (a, b, c) para que se muestre un mensaje de error cuando se produzca alguna de las siguientes situaciones (el mensaje de error debe indicar qué situación(es) no se cumplieron):
+
+    <script type="text/javascript">
+
+        var a = 3;
+        var b = 7;
+        var c = 5;
+        var mensaje = "";
+
+        if( a < 0 || b < 0 || c < 0){
+            mensaje += "ERROR. Una de las tres var es neg.";
+        }else{
+            mensaje += "Condición 1 acertada.";
+        }
+
+        if(a == 0 && b == 0 && c == 0){
+            mensaje += "\nERROR. Las tres var son igual a 0.";
+        }else{
+            mensaje += "\nCondición 2 acertada.";
+        }
+
+        if( (a+b+c)> 10 && ( a != b ) && ( a != c ) && (b != c) ){
+            mensaje += "\nERROR. La suma de las tres var es mayor que 10 y las tres var son diferentes.";     
+        }else{
+            mensaje += "\nCondición 3 acertada.";
+        }
+
+        alert(mensaje);
+
+
+    </script>
+    
+</body>
+</html>

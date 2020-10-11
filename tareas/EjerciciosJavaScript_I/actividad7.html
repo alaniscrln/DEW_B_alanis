@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Hacer un juego para que el usuario averigüe la capital de un país previamente definida. Tiene tres intentos y debe mostrase en pantalla si ha acertado o no, incluyendo en este caso el número de intentos que le quedan.
+
+    <script type="text/javascript">
+
+        var pais = "Brazil"
+        var capital = "brasilia"
+
+        var resultado ="";
+
+        var i = 3;
+        var ha_acertado = false;
+        while( i > 0 && ha_acertado == false){
+            resultado = prompt("Dime la capital de " + pais + ". Te quedan " + i + " intentos.");
+            if(resultado.toLowerCase() == capital){
+                ha_acertado = true;
+                i = 0;
+            }
+            i--;
+        }
+
+        if(ha_acertado == true){
+            alert("Has acertado!");
+        }else{
+            alert("Toca estudiar más...");
+        }
+
+    </script>
+    
+</body>
+</html>

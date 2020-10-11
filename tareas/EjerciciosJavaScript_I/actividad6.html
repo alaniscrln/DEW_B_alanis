@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    En este reto deberás sumar el valor de 5 números naturales. Para ello, deberás solicitar al usuario que introduzca
+    un número entero, calcular y sumar los 5 números siguientes e imprimir el resultado por la consola, y volver a
+    repetir este proceso 5 veces más.
+
+    <script type="text/javascript">
+
+        for (var i = 0; i < 5; i++) {
+
+            var num = prompt("Introduce un número entero");
+
+            var j = 1;
+            var result = 0;
+            while (j <= 5) {
+                result += ++num;
+                j++;
+            }
+
+            console.log("El resultado es: " + result);
+        
+        }
+
+    </script>
+
+</body>
+
+</html>
