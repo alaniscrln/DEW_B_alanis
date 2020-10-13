@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    9. Escribir un programa que proporcione el desglose en el número mínimo de billetes y monedas de una cantidad entera
+    cualquiera de euros dada. Recuerda que los billetes y monedas de uso legal disponibles hasta 1 euro son de: 500,
+    200, 100, 50, 20, 10, 5, 2 y 1 euros. Para ello deben solicitar al usuario un número entero (comprobar que lo es) y
+    desglosar la cantidad en el número mínimo de billetes y monedas.
+
+
+    <script type="text/javascript">
+
+        let cambio = new Array();
+        let cantidad = parseInt(prompt("Introduce una cantidad entera de dinero: ", "40"));
+
+        let billetesYMonedas = new Array();
+        billetesYMonedas.push(500);
+        billetesYMonedas.push(200);
+        billetesYMonedas.push(100);
+        billetesYMonedas.push(50);
+        billetesYMonedas.push(20);
+        billetesYMonedas.push(10);
+        billetesYMonedas.push(5);
+        billetesYMonedas.push(2);
+        billetesYMonedas.push(1);
+
+
+        var i = 0;
+        while (i < billetesYMonedas.length) {
+
+            if ( cantidad >=  parseInt( billetesYMonedas[i] ) ) {
+                cambio.push(billetesYMonedas[i]);
+                cantidad -= parseInt(billetesYMonedas[i]);
+            }else{
+                i++;
+            }
+
+        }
+
+        alert("Su cambio es (en billetes y monedas): " + cambio);
+
+    </script>
+
+
+</body>
+
+</html>

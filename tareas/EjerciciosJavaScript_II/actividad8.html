@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    8.Genera una lista que contenga el cuadrado de los números pares y el cubo de los impares entre 1 y 100 (inclusive).
+
+    <script type="text/javascript">
+
+        var lista = new Array();
+
+        for(let i = 1; i <= 100; i++){
+            if(i % 2 == 0){   // es par
+                lista.push(Math.pow(i, 2));
+            }else{
+                lista.push(Math.pow(i, 3));
+            }
+        }
+
+        for(let i = 0; i < lista.length; i++){
+            console.log( lista[i] );
+        }
+        
+    </script>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    10. Muestra la fecha y hora actuales en formato: “DD/MM/YYYY hh:mm:ss TimeZone”.
+
+
+    <script type="text/javascript">
+    
+        var fecha = new Date();
+
+        var hoy = fecha.getDate() + "/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear() + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + fecha.getSeconds() + " " + fecha.getTimezoneOffset();
+
+        alert(hoy);
+        
+    </script>
+</body>
+
+</html>

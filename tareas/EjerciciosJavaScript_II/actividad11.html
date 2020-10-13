@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    11. Construye una fecha a partir del texto “02/04/2015”. Muestra la fecha con console.log, ¿qué obtienes? Prueba
+    ahora con “2015-04-02”.¿Cómo podrías crear una fecha con el texto “April 02, 2015”?
+
+    <script type="text/javascript">
+
+        var fecha = "02/04/2015";
+        var partes = fecha.split('/');
+        var date1 = new Date(partes[2], partes[1] - 1, partes[0]);
+        alert(date1);
+
+        fecha = "2015-04-02";
+        partes = fecha.split('-');
+        var date2 = new Date(partes[0], partes[1] - 1, partes[2]);
+        alert(date2);
+
+        var date3 = new Date("April 02, 2015");
+        alert(date3);
+
+    </script>
+
+</body>
+
+</html>
