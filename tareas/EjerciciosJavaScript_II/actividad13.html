@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    13. Implementar una función hdec2hms(x) que transforme una hora en formato decimal a su equivalente en formato
+    hh:mm:ss (en texto). Por ejemplo, 8.25 = “8:15:00” y 10.12 = “10:07:12”.Implementar también la función inversa
+    hms2hdec(h,m,s).
+
+
+    <script type="text/javascript">
+
+        alert(hms2hdec(8, 47, 24));
+
+        alert(hdec2hms("8.79"));
+
+        //-----------------------------------------------------------------
+
+        function hdec2hms(x) { // recibo el numero en decimal y lo paso a formato hora
+
+            var numeros1 = x.split('.');
+
+            var horas = numeros1[0]; // las horas estan bn
+            var minDecimal = parseFloat("0." + numeros1[1]); // tengo q calcular los min
+            minDecimal = minDecimal * 60;
+
+            var min, seg;
+            if (minDecimal % 1 == 0) { // si es un numero entero...
+                min = minDecimal;
+                seg = "00";
+            } else {
+                minDecimal = minDecimal.toPrecision(4); // cantidad de numeros q quiero guardar
+                var minString = minDecimal.toString();
+                var numeros2 = minString.split('.');
+                min = numeros2[0];
+                var segDecimal = parseFloat("0." + numeros2[1]); 
+                seg = segDecimal * 60;
+            }
+
+            return horas + ":" + min + ":" + seg;
+
+        }
+
+        function hms2hdec(h, m, s) {   // recibo en formato hora para pasarlo a decimal
+
+            return h + (m / 60) + (s / (60 * 60));
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

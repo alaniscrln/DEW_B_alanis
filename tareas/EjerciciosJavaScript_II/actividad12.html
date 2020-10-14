@@ -15,9 +15,47 @@
     minutos y ‘s’ → segundos. Si no es ninguna de estas unidades, se mostrará un error.
 
     <script type="text/javascript">
-    
-        
-    
+
+
+        alert(calcularTiempo("1999-06-23", 'd'));
+        alert(calcularTiempo("1999-06-23", 'h'));
+        alert(calcularTiempo("1999-06-23", 'm'));
+        alert(calcularTiempo("1999-06-23", 's'));
+        alert(calcularTiempo("1999-06-23"));
+
+
+        //----------------------------------------------------------------------------------------------------------------
+
+        function calcularTiempo(fecha, unidad) {
+
+            // La fecha viene dada en el formato "YYYY-MM-DD"
+
+            var datos = fecha.split('-');
+            var fechaInicial = new Date(datos[0], datos[1] - 1, datos[2]);
+            var fechaActual = new Date();
+
+            var resultado;
+            switch (unidad) {
+                case 'd':   // dias de diferencia
+                    resultado = parseInt((fechaActual.getTime() - fechaInicial.getTime()) / (1000 * 60 * 60 * 24)); 
+                    break;
+                case 'h':   // horas
+                    resultado = parseInt((fechaActual.getTime() - fechaInicial.getTime()) / (1000 * 60 * 60));
+                    break;
+                case 'm': // minutos
+                    resultado = parseInt((fechaActual.getTime() - fechaInicial.getTime()) / (1000 * 60));
+                    break;
+                case 's': // segundos
+                    resultado = parseInt((fechaActual.getTime() - fechaInicial.getTime()) / (1000));
+                    break;
+                default:
+                resultado = "ERROR. Introduce una unidad.";
+            }
+
+            return resultado;
+
+        }
+
     </script>
 </body>
 
