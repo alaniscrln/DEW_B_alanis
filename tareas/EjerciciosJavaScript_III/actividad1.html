@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Realizar una función que indicando un texto y un carácter (ambos obligatorios, comprobar que el segundo parámetro es
+    realmente un único carácter), nos diga cuántas veces aparece el carácter en el texto.
+
+
+
+    <script type="text/javascript">
+    
+        var result = charEnTexto( prompt("Introduzca su texto:"), 
+                                prompt("Introduzca la letra que desea contar:"));
+
+        alert("La letra aparece " + result + " veces.");
+
+        //---------------------------------------------------------
+
+        function charEnTexto(texto, letra){
+
+            let numletra = 0;
+            if(texto == undefined || letra == undefined){
+                alert("Error! Introduzca todos los datos solicitados, por favor.");
+                numletra= NaN;
+            }else{
+                if(letra.length > 1){
+                    alert("Por favor, introduzca sólo un carácter.");
+                    numletra= NaN;
+                }else{
+
+                    for(let i = 0; i < texto.length; i++){
+                        if(texto.charAt(i) == (letra)){
+                            numletra++;
+                        }
+                    }
+
+                }
+            }
+
+            return numletra;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

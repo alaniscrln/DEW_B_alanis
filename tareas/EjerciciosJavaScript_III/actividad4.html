@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Crear una función que genere un array aleatorio, usando 3 parámetros: número de elementos (por defecto 10, valor
+    mínimo del elemento (por defecto 100), valor máximo (por defecto 200).
+
+    <script type="text/javascript">
+    
+        alert(arrayAleatorio());
+        alert(arrayAleatorio(3,0,5));
+        
+
+        //------------------------------------------------------------
+
+        function arrayAleatorio(n=10, min=100, max=200){
+
+            let vector = new Array(n);
+
+            for(let i = 0; i < vector.length; i++){
+                // math.floor devuelve el int
+                vector[i] = Math.floor(Math.random()* ( (max+1) - min ) + min);
+            }
+            return vector;
+
+        }
+    
+    </script>
+
+</body>
+
+</html>

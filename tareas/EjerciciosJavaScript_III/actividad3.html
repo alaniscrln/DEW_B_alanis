@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Realizar una función en JS que dado un DNI (comprobar que es un número entre 0 y 99999999), devuelva la letra
+    asociado al mismo. Esta letra se calcula como el módulo (resto) de la división del número del DNI entre 23, y a
+    partir del resto se escoge una de las siguientes letras según la posición: TRWAGMYFPDXBNJZSQVHLCKET. Por ejemplo,
+    para el DNI 12345678, al dividir entre 23 se obtiene como resto 14, por lo que le corresponde la letra 'Z', siendo
+    el DNI correcto 12345678Z.
+
+    <script type="text/javascript">
+
+        alert("La letra de su dni es: " + calcularLetraDNI(12345678));
+        alert("La letra de su dni es: " + calcularLetraDNI(-3));
+        alert("La letra de su dni es: " + calcularLetraDNI(999999999));
+
+        //--------------------------------------------------------
+
+        function calcularLetraDNI(dni) {
+
+            if (dni > 0 && dni < 99999999) {
+                let pos = dni % 23;
+                let letras = "TRWAGMYFPDXBNJZSQVHLCKET";
+                return letras.charAt(pos);
+            } else {
+                alert("Numero no válido :c");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Escribir una función que acepte al menos un argumento (el primer argumento debe ser obligatorio, mostrar un mensaje
+    de error si no se indica, luego se pueden indicar tantos argumentos como desee el usuario) y que devuelva la suma y
+    la media de todos los elementos. Comprobar que todos los argumentos sean números e ignorar los que no lo sean,
+    mostrando un aviso (por ejemplo: ¡AVISO! El argumento número 3 "Hola" no es un número, lo ignoramos").
+
+
+    <script type="text/javascript">
+
+        alert("La suma da: " + sumar(4));
+        alert("La suma da: " + sumar(4, 1, 2, 1));
+        alert("La suma da: " + sumar());
+    
+
+
+        //-------------------------------------------------------------
+
+        function sumar(num1, ...restoNums) {
+
+            let suma = 0;
+            if (num1 == undefined) {
+                alert("Debe introducir al menos un número!");
+                suma = NaN;
+            } else {
+                suma += num1;
+                let i = 0;
+                while (i < restoNums.length) {
+                    suma += restoNums[i];
+                    i++;
+                }
+            }
+
+            return suma;
+
+        }
+
+
+    </script>
+</body>
+
+</html>
