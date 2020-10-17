@@ -4,20 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 
 <body>
-    Usando la función del ejercicio 1, generar un array aleatorio de 20 elementos entre 20 y 100 y luego ordenarlo.
+
+    Crear una función que mezcle los elementos de un array en orden aleatorio. Probar con el array ordenado creado en el
+    ejercicio anterior
 
     <script type="text/javascript">
 
         let v = arrayAleatorio(20, 20, 100);
 
-        alert(ordenarArray(v));
+        alert("ordenado: " + ordenarArray(v));
 
-        //------------------------------------------------------------
+        alert("desordenado: " + desordenarArray(v));
+        
+        //---------------------------------------------------------------------------------------
+
+        function desordenarArray(v) {
+
+            let pos;
+            let i = 0;
+            while (i < v.length) {
+                // para generar aleatoriamente una pos del vector
+                pos = Math.floor(Math.random() * ((v.length) - 0) + 0);
+
+                let x = v[i];
+                v[i] = v[pos];
+                v[pos] = x;
+                i++;
+            }
+            return v;
+        }
 
         function arrayAleatorio(n = 10, min = 100, max = 200) {
 
@@ -47,8 +66,8 @@
             return v;
         }
 
-    </script>
 
+    </script>
 
 </body>
 

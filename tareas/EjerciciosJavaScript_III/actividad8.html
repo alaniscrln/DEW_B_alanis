@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Crear una función que acepte un array y devuelva otro array con la raíz cuadrada de cada elemento. Probar con un
+    array aleatorio de 20 números entre 60 y 100.
+
+
+    <script type="text/javascript">
+
+        let v = new Array();
+        v = arrayAleatorio(20, 60, 100);
+        console.log(raizCuadradaArray(v));
+        
+        //-----------------------------------------------------------------------------------------
+
+        function raizCuadradaArray(v) {
+            vNuevo = new Array();
+
+            for (let i = 0; i < v.length; i++) {
+                // math.sqrt calcula la raiz cuadrada del num. tofixed limita el num de decimales
+                vNuevo.push( Math.sqrt( v[i] ).toFixed(2) );
+            }
+
+            alert(vNuevo.length);
+
+            return vNuevo;
+        }
+
+
+        function arrayAleatorio(n = 10, min = 100, max = 200) {
+
+            let vector = new Array(n);
+
+            for (let i = 0; i < vector.length; i++) {
+                // math.floor devuelve el int
+                vector[i] = Math.floor(Math.random() * ((max + 1) - min) + min);
+            }
+            return vector;
+
+        }
+
+    </script>
+</body>
+
+</html>

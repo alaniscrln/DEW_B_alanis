@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--
+    Recorrer un array aleatorio generado con la función del ejercicio 1 (15 elementos entre -10 y 20) y para cada
+    elemento x, gestionar un nuevo array de la siguiente forma:
+
+    x <= -5: Eliminar el primer elemento del array
+
+    -5 < x <= 0: Eliminar el último elemento del array
+
+    0 < x <=  10: Añadir x al principio del array
+
+    10 < x <=  10: Añadir x al final del array
+
+    Mostrar un mensaje de texto para cada número indicando el valor de x, la operación realizada (eliminar o añadir, 
+    al principio o al final), el número añadido/eliminado y el tamaño del array tras realizar la operación
+
+    -->
+
+    <!--
+
+SE QUEDA EN BUCLE INFINITO. EL ENUN NO ESPECIFICA SI HAY Q ELIMINAR EL ELEM DESPUES DE AÑADIRLO AL VECTOR, POR ESO 
+NUNCA SALE DEL BLUCLE (como siempre elimina o añade, nunca termina).
+
+    -->
+
+    <script>
+
+        let v = new Array(15);
+        v = arrayAleatorio(v.length, -10, 20);
+
+        vNuevo = new Array();
+        vNuevo = v;
+
+        alert(vNuevo + " length: " + vNuevo.length );
+        for (let i = 0; i < vNuevo.length; i++) {
+
+            let x = vNuevo[i];
+            let n;
+            alert("valor de x :" + x);
+            if (x <= -5) {
+                n = vNuevo.shift(); // este metodo elimina el primer elemento
+                alert("Primer elemento del array (x = " + n + " ) eliminado.\nTamaño nuevo de array: " + vNuevo.length);
+                alert("Vector: " + vNuevo);
+            } else if (-5 < x && x <= 0) {
+                n = vNuevo.pop(); // este metodo elimina el ultimo elem
+                alert("Último elemento del array (x = " + n + " ) eliminado.\nTamaño nuevo de array: " + vNuevo.length);
+                alert("Vector: " + vNuevo);
+            } else if (0 < x && x <= 10) {
+                vNuevo.unshift(x); // este metodo añade al principio del vector un elem
+                i++; // para evitar q se quede en bucle infinito
+                alert("Añadido primer elemento del array (x = " + x + " ).\nTamaño nuevo de array: " + vNuevo.length);
+                alert("Vector: " + vNuevo);
+            } else if (10 < x && x <= 20) {
+                vNuevo.push(x); // este metodo añade al final del vector
+                alert("Añadido último elemento del array (x = " + x + " ).\nTamaño nuevo de array: " + vNuevo.length);
+                alert("Vector: " + vNuevo);
+
+            }
+
+        }
+        alert(vNuevo);
+
+
+        //---------------------------------------------------------------------------------------------------------------------
+        function arrayAleatorio(n = 10, min = 100, max = 200) {
+
+            let vector = new Array(n);
+
+            for (let i = 0; i < vector.length; i++) {
+                // math.floor devuelve el int
+                vector[i] = Math.floor(Math.random() * ((max + 1) - min) + min);
+            }
+            return vector;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
