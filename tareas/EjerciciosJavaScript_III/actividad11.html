@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Modificar el ejercicio anterior para que si el número ya existía, nos indique cuántas veces había aparecido con
+    anterioridad.
+
+    <script type="text/javascript">
+
+        let v = new Array();
+        v = arrayAleatorio(50, 10, 20);
+        console.log(v);
+        let vPrimeros = new Array(); // vector donde guardo los num primeros
+
+        for(let i = 0; i < v.length; i++){
+            if( !existePrimero(v[i]) ){
+                vPrimeros.push(v[i]); // guardo en primeros el num q aparece por primera vez
+                console.log("El número " + v[i] + " aparece por primera vez.");
+            }else{    
+                console.log("El número " + v[i] + " ya había aparecido antes.\nYa van " + contarRecurrencias(v, i, v[i]) + " veces");
+            }
+        }
+
+
+        //---------------------------------------------------------------------------------------------
+        
+        function existePrimero(x){
+            // comprobar si x está en el vector de los primeros 
+            let existe = false;
+            for(let i = 0; i < vPrimeros.length; i++){
+                if(x == vPrimeros[i]){
+                    existe = true;
+                    i = vPrimeros.length;
+                }
+            }
+            return existe;
+        }
+        function contarRecurrencias(v, ind, x){
+            // contar el num de veces q se ha repetido hasta el indice (ind)
+
+            let num = 0;
+            for(let i = 0; i <= ind; i++){
+                if(v[i] == x){
+                    num++;
+                }
+            }
+            return num;
+        }
+
+        function arrayAleatorio(n = 10, min = 100, max = 200) {
+
+            let vector = new Array(n);
+
+            for (let i = 0; i < vector.length; i++) {
+                // math.floor devuelve el int
+                vector[i] = Math.floor(Math.random() * ((max + 1) - min) + min);
+            }
+            return vector;
+        }
+
+    </script>
+</body>
+
+</html>

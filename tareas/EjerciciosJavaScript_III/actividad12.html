@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Escribir una función que busque la cadena "arriba" en un texto. La función deberá informar si encuentra o no esta
+    cadena en el texto y, si la encuentra, nos deberá mostrar el texto reemplazando "arriba" por "abajo".
+
+    <script type="text/javascript">
+
+        let str = "Las cosas están arriba, ve a buscarlas allá arriba, por favor.";
+        alert(str);
+        alert( buscarCadena(str, "arriba", "abajo") );
+    
+    //-------------------------------------------------------------------------------------------------------
+
+    function buscarCadena(texto, cadena, cambio){
+        // se busca la cadena en el texto y si hay se sustituye por cambio
+        let re = new RegExp(cadena);
+        let nuevoTexto;
+        if( re.test(texto) ){ // si en el texto aparece la cadena
+            nuevoTexto = texto.replaceAll(cadena, cambio); // reescribo 'cambio' donde 'cadena'
+        }
+        return nuevoTexto;
+    }
+    
+    </script>
+</body>
+
+</html>

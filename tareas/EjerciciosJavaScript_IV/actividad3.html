@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    3- Realiza una función que calcule la media de 5 notas introducidas por el usuario. Utiliza “arguments”. Muestra el
+    resultado por consola.
+
+    <script type="text/javascript">
+    
+    console.log("Media: " + media(10,5,8,7,4));
+
+//-------------------------------------------------------------------------------------------------------
+
+function media(){
+    let suma = 0;
+    for(let i = 0; i < arguments.length; i++){
+        suma += arguments[i];
+    }
+
+    return suma / arguments.length;
+}
+    
+    </script>
+</body>
+
+</html>
