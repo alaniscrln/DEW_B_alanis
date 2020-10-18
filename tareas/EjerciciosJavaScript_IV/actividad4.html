@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    4- Realiza la validación de una matrícula de un coche 0000-XXX mediante expresiones regulares.
+
+    <script type="text/javascript">
+
+        //  coincide con 4 num, guión y tres letras
+        let re = /\d{4}-\D{3}/;
+
+        alert(re.test("0000-XXX"));
+
+    </script>
+
+</body>
+
+</html>

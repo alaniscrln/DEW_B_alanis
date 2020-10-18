@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    10- Analiza los diferentes métodos de arrays y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+
+    <script type="text/javascript">
+
+        let v = new Array(5);
+
+        for (let i = 0; i < v.length; i++) {
+            v[i] = prompt("Introduce valor" + (i + 1));
+        }
+
+        let long = prompt("Longitud nuevo array: ");
+        let v2 = new Array();
+        for (let i = 0; i < long; i++) {
+            v2[i] = prompt("Introduce valor" + (i + 1));
+        }
+
+        alert("Unión de dos arrays: " + unirDosVectores(v,v2));
+
+        addElem(v, prompt("Introduce cuántos elem más quieres añadir:"));
+        alert(v);
+        delElem(v, prompt("Introduce cuántos elem quieres borrar (desde el final):"));
+        alert(v);
+
+        //-------------------------------------------------------------------
+
+        function unirDosVectores(v1, v2) {
+            return v1.concat(v2);
+        }
+
+        function addElem(v, x) {
+            for (let i = 0; i < x; i++) {
+                v.push(prompt("Valor: "));
+            }
+        }
+
+        function delElem(v) {
+            for (let i = 0; i < x; i++) {
+                v.pop(prompt("Valor: "));
+            }
+        }
+
+    </script>
+</body>
+
+</html>

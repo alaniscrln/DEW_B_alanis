@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    8- Realiza 3 ejercicios anteriores utilizando funciones anónimas.
+
+    <!--
+        en las func anonimas no se les pone nombre. se les pasa param si 
+        son necesarios. estructura: 
+
+        ( function (param) {
+            .
+            .code
+            .
+        } (param value) );
+    -->
+    
+    <script type="text/javascript">
+
+        //actividad5
+
+        alert("Actividad 5: validar nombre de usu -> " + function (usu) {
+            let re = /^@\w+-*/;
+            return re.test(usu);
+        }("@edsiya_99"));
+
+        //actividad6
+
+        alert("Actividad 6: validar email -> " + function (email) {
+            let re = /^\w*\.*-*@\d*\D*\.(\D){2,3}$/;
+            return re.test(email);
+        }("eduestudia99@hotmail.com"));
+
+        //actividad7
+
+        alert("Actividad 7: validar fecha -> " + function (fecha) {
+            let re = /\d{2}\/\d{2}\/\d{4}/;
+            return re.test(fecha);
+        } ("18/10/2020"));
+
+    </script>
+
+</body>
+
+</html>

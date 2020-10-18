@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    9- Analiza los diferentes métodos de string y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+
+    <script type="text/javascript">
+
+        let texto = prompt("Introduzca un texto", "Buenas tardes a todos");
+        let palabra = prompt("Introduzca la palabra que desea encontrar", "tardes"); 
+        alert(textoIncluye(texto, palabra ));
+
+        texto = prompt("Introduzca un texto", "Buenas tardes a todos");
+        let letra = prompt("¿Cúal es la primera letra?", "B"); 
+        alert(primerLetraEs(texto, letra ));
+
+        texto = prompt("Texto que desee en mayus: ", "Buenas tardes a todos");
+        alert(textoAMayus(texto));
+
+//----------------------------------------------------------------------------------------------------------
+
+        function textoIncluye( texto, subtexto){
+            return texto.includes(subtexto);
+        }
+
+        function primerLetraEs(texto, letra){
+            return texto.toLowerCase().charAt(0) == letra.toLowerCase();
+        }
+
+        function textoAMayus(texto){
+            return texto.toUpperCase();
+        }
+
+
+    </script>
+
+</body>
+
+</html>

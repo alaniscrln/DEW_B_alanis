@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    5- Valida un nombre de usuario en twitter, empieza por @ y puede contener letras mayúsculas y minúsculas, números,
+    guiones y guiones bajos.
+
+    <script type="text/javascript">
+        // \w include a-z, A-Z, 0-9 y el '_'
+
+        let usu = prompt("Introduzca un nombre de usuario para twitter ('@' incluido): ", "@alaniscrln");
+        if(validarNombreUsuTwitter(usu)){
+            alert("¡Nombre válido!");
+        } else{
+            alert("Vuelva a intertarlo.");
+        }
+
+        //---------------------------------
+
+        function validarNombreUsuTwitter(usuario) {
+            let re = /^@\w+-*/;
+                return re.test(usuario);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Crear una expresión regular valide una fecha en formato "XX/XX/XXXX", donde "X" es un dígito. Probarlo con la
+    expresión: "Nací el 05/04/1982 en Donostia.".
+
+    <script type="text/javascript">
+
+        let texto = prompt("Texto con fecha formato dd/mm/yyyy: ", "Nací el 05/04/1982 en Donostia.");
+        if (validarFechaDdMmYyyy(texto)) {
+            alert("fecha bien introducida.");
+        } else {
+            alert("Vuelve a intentarlo.");
+        }
+
+        //----------------------------------------------------------------------------
+
+        function validarFechaDdMmYyyy(fecha) {
+            let re = /\d{2}\/\d{2}\/\d{4}/;
+            return re.test(fecha);
+        }
+
+    </script>
+</body>
+
+</html>
