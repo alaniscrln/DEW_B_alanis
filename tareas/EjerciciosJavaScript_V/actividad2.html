@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    ACTIVIDAD 2
+
+Vamos a crear una pequeña base de datos de viajeros para una agencia de viajes:
+
+    Crea una estructura para guardar los datos de personas (nombre, apellidos, edad)
+     
+    A partir de la estructura anterior, vamos a añadir los datos de los viajeros: una lista de países visitados (los países NO se pueden repetir) y si tiene o no tarjeta de puntos en nuestra agencia 
+     
+    Ahora crea otra estructura para guardar los datos de los viajeros, los identificaremos por un código de cliente de nuestra agencia
+       
+    Crea las siguientes funciones/métodos para gestionar nuestra base de datos:
+        Crear un nuevo viajero (debe comprobar si el código de cliente ya existe. Si es así, muestra un mensaje y no lo inserta)
+        Eliminar un viajero (identificado por su código de cliente)
+        Mostrar todos los viajeros (sus datos personales, qué países ha visitado y si tiene tarjeta)
+        Añadir un país a un viajero (identificado por su código de cliente)
+        Eliminar un país a un viajero (identificado por su código de cliente)
+         
+    Haz algunas pruebas para comprobar que todo funciona bien, realizando llamadas a las funciones/métodos antes creados.
+
+    <script type="text/javascript">
+    
+        
+        crearViajero("eduardo", "da silva", 21, false);
+
+
+        //-----------------------------------------------------
+
+        // creacion de estructura para guardar datos viajeros
+        function Viajero(nombre, apellidos, edad){
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.edad = edad;
+        }
+
+        //añadir atrib a Viajeros:
+        Viajero.listaPaisesVisitados;
+        Viajero.tieneTarjetaPuntos;
+
+
+
+        //guardar a los clientes:
+        let listaClientes = new Array();
+
+        function crearViajero(cod, nombre, apellidos, edad,tieneTarjetaPuntos){
+
+            let existeCliente = false;
+            for(let i = 0; i < listaClientes.length && existeCliente == false; i++){
+                if(cod == i){
+                    alert("Código de cliente ya existente.");
+                    existeCliente = true;
+                }
+            }
+
+            if(existeCliente == false){
+                let viajero = new Viajero(nombre, apellidos, edad);
+                viajero.tieneTarjetaPuntos = tieneTarjetaPuntos;
+                listaClientes.push( viajero );
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        // estructura para guardar a los clientes:
+        function codViajeroPair(cod, viajero){  // es un PAIR
+            this.cod = cod;
+            this.viajero = viajero;
+
+
+        }
+
+        function almacenamientoClientes(){  
+            
+            let codViajero = new Array<codViajeroPair>();
+
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+            this.crearViajero = function(cod, nombre, apellidos, edad, tieneTarjetaPuntos){
+                
+                let viajero = new Viajero(nombre, apellidos, edad);
+                viajero.tieneTarjetaPuntos = tieneTarjetaPuntos;
+                codViajero
+
+
+            }
+            
+        }
+        */
+    
+    </script>
+
+
+
+
+</body>
+</html>

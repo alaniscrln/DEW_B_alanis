@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    ACTIVIDAD 1
+
+    Crea un script donde se realicen las siguientes acciones:
+    
+    a) Pedir al usuario un nombre de titular, apellidos de titular y saldo de la cuenta.
+    
+    b) Crear un nuevo objeto cuentaBancaria que se inicializará con los datos facilitados por el usuario. 
+    
+    c) Mostrar un mensaje informando de que se ha creado la nueva cuenta bancaria y de los datos asociados a la cuenta bancaria creada.
+
+    <script type="text/javascript">
+    
+
+
+            // solicitud de datos
+            let nom = prompt("Nombre del titular: ", "Eduardo");
+            let apell = prompt("Apellidos del titular: ", "Da Silva");
+            let saldo = prompt("Saldo: ", "500");
+
+            // creacion de obj
+            let cuenta = new CuentaBancaria(nom, apell, saldo);
+
+            alert("Cuenta creada!");
+            alert(Object.values(cuenta));
+
+        //---------------------------------------------------
+
+
+        function CuentaBancaria(nombre, apellidos, saldo){
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.saldo = saldo;
+        }
+
+    </script>
+</body>
+</html>
