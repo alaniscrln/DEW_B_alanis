@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        13-   Escriba un programa para contar el número de palabras en una cadena.
+
+        Nota :
+        - Elimine los espacios en blanco de la posición inicial y final.
+        - Convierta 2 o más espacios en 1.
+        - Excluya la nueva línea con un espaciado inicial.
+        
+        <script type="text/javascript">
+
+            
+            let texto = prompt("Introduce un texto: ", "holaa  q tal ? xd   ");
+            alert(contarPalabrasTexto( arreglarTexto(texto) ));    
+            
+            //------------------------------------------------------
+
+            function arreglarTexto(texto){ // metodo para dejar el texto con todos los espacios bn arreglados
+
+                let re = /\s+/i; //que aparezca una o mas veces un espacio en blanco
+                let textoLimpio = texto.replace(re, " ");
+                re = /^\s+|\s+$/g;  // borra los espacios del inicio y del final
+                textoLimpio = texto.replace(re, "");
+                alert(textoLimpio);
+                return textoLimpio;
+            }
+
+            function contarPalabrasTexto(texto){
+                let re = / /; // para hacer match con el ' ';
+
+                let count = 0;
+                for(let i = 0; i < texto.length; i++){
+                    if(texto.charAt(i).match(re)){
+                        count++;
+                    }
+                }
+                return count;
+            } 
+            
+        </script>
+</body>
+</html>

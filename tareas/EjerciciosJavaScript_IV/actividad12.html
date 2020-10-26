@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    12-   Realiza un script para buscar una fecha dentro de una cadena introducida por el usuario.
+
+    <script type="text/javascript">
+
+        let texto = prompt("Texto con fecha formato dd/mm/yyyy: ", "Hoy es 26/10/2020.");
+        if (validarFechaDdMmYyyy(texto)) {
+            alert("Hay una fecha en el texto.");
+        } else {
+            alert("No hay una fecha en el texto.");
+        }
+
+        //----------------------------------------------------------------------------
+
+        function validarFechaDdMmYyyy(fecha) {
+            let re = /\d{2}\/\d{2}\/\d{4}/; // regex para comprobar q hay una fecha
+            return re.test(fecha);
+        }
+
+    </script>
+
+
+</body>
+</html>

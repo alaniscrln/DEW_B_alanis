@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    11-   Realiza un programa para probar si el primer carácter de una cadena introducida por el usuario está en mayúsculas o no.
+
+    <script type="text/javascript">
+    
+        let texto = prompt("Introduce una cadena de texto", "Hola mundo");
+        alert(checkMayus(texto));
+
+
+        texto = prompt("Introduce una cadena de texto", "hola mundo");
+        alert(checkMayus(texto));
+
+
+        //----------------------------------------------------------------
+
+        function checkMayus(texto){
+
+            let primeraLetra = texto.charAt(0);
+
+            if(texto.charAt(0) == primeraLetra.toUpperCase()){
+                return true;
+            }
+            return false;
+
+        }
+    
+    
+    </script>
+    
+</body>
+</html>

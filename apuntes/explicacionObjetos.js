@@ -72,7 +72,7 @@ var persona4 ={
 
 Object.getOwnPropertyNames(persona4);
 
-// OBJ ANIADOS
+// OBJ ANIDADOS
 
 //definir de forma literal
 
@@ -152,4 +152,46 @@ si animal tiene una funcion en su prototipo, perro aunq herede de animal, no pue
 Perro.prototype = Object.create(Animal.prototype); // une los dos prototipos
 Perro.prototype.constructor = Perro; // definimos el constructor de perro otra vez, q es Perro.
 
+var perro1 = new Perro("rufo", "blanco", "azul");
+
 /* de esta forma, al unir los ,prototipos, perro ya puede usar la funcion correr. Sigue manteniendo su funcion prototipo ladrar. */
+
+
+// FECHA 26 OCT 2020
+
+// PROPIEDADES DE LOS OBJETOS
+
+
+Object.defineProperty(perro1, "dueno",{     //por defecto, todo en false
+    value: "Alanis",
+    writable: false,    // si es reescribible
+    configurable: false,       // si se puede re configurar
+    enumerable: false       // si se puede enumerar (al iterar al mostrar las prop, no apareceria)
+});
+
+// con lo de arriba no podemos modificarlo, enumerarlo, cambiarle el valor. Pero si podemos ver su valor.
+
+
+perro1.dueno = "Daniel"; // no podemos hacerlo
+delete perro1.dueno; // tampoco podemos
+
+for(x in perro1){
+    console.log(x + " ");   // no saldra dueno
+}
+
+
+// metodo FREEZE
+
+let persona ={
+    nombre: "Abigail",
+    mostrarNombre : function(){
+        console.log(nombre);
+    }
+}
+
+console.log(persona.mostrarNombre());
+
+Object.freeze(persona);     // no permitir q sea modificado
+
+persona.nombre = " abigail siñani"; // no haria el cambio
+
