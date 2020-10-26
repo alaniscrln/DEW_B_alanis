@@ -45,70 +45,35 @@ Vamos a crear una pequeña base de datos de viajeros para una agencia de viajes:
         Viajero.listaPaisesVisitados;
         Viajero.tieneTarjetaPuntos;
 
-
-
         //guardar a los clientes:
-        let listaClientes = new Array();
+        let listaClientes = new Map();
 
         function crearViajero(cod, nombre, apellidos, edad,tieneTarjetaPuntos){
 
             let existeCliente = false;
-            for(let i = 0; i < listaClientes.length && existeCliente == false; i++){
+            for(let i = 0; i < listaClientes.size && existeCliente == false; i++){
+                //recorro el mapa, si el cod lo encuentro en el mapa, significa q ya existe el cliente.
                 if(cod == i){
                     alert("Código de cliente ya existente.");
                     existeCliente = true;
                 }
             }
 
-            if(existeCliente == false){
+            if(existeCliente == false){ // si no eciste el cliente, lo creo
                 let viajero = new Viajero(nombre, apellidos, edad);
                 viajero.tieneTarjetaPuntos = tieneTarjetaPuntos;
-                listaClientes.push( viajero );
+                listaClientes.set(cod, viajero);
             }
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        // estructura para guardar a los clientes:
-        function codViajeroPair(cod, viajero){  // es un PAIR
-            this.cod = cod;
-            this.viajero = viajero;
-
+        function eliminarViajero(cod){
 
         }
 
-        function almacenamientoClientes(){  
-            
-            let codViajero = new Array<codViajeroPair>();
-
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-            this.crearViajero = function(cod, nombre, apellidos, edad, tieneTarjetaPuntos){
-                
-                let viajero = new Viajero(nombre, apellidos, edad);
-                viajero.tieneTarjetaPuntos = tieneTarjetaPuntos;
-                codViajero
 
 
-            }
-            
-        }
-        */
+
     
     </script>
 
