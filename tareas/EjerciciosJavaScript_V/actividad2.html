@@ -28,57 +28,122 @@ Vamos a crear una pequeña base de datos de viajeros para una agencia de viajes:
 
     <script type="text/javascript">
     
-        
-        crearViajero("eduardo", "da silva", 21, false);
-
-
-        //-----------------------------------------------------
-
-        // creacion de estructura para guardar datos viajeros
-        function Viajero(nombre, apellidos, edad){
+        //guardar a los clientes:
+        let listaViajeros = new Map();
+// creacion de estructura para guardar datos viajeros
+function Viajero(nombre, apellidos, edad){
             this.nombre = nombre;
             this.apellidos = apellidos;
             this.edad = edad;
+            this.listaPaisesVisitados = new Array();
         }
 
         //añadir atrib a Viajeros:
-        Viajero.listaPaisesVisitados;
         Viajero.tieneTarjetaPuntos;
+        //Viajero.listaPaisesVisitados = new Array();
 
-        //guardar a los clientes:
-        let listaClientes = new Map();
+        crearViajero(1, "eduardo", "da silva", 21, false);
+        mostrarViajeros();
+        crearViajero(2, "alanis", "simoes", 21, true );
+        addPaisViajero(2, "Venezuela");
+        mostrarViajeros();
+        addPaisViajero(2, "España");
+        mostrarViajeros();
+        delPaisViajero(2, "España");
+        mostrarViajeros();
+
+        //-----------------------------------------------------
+
+        
+
+
+        function existeViajero(cod){
+            // devolverá true si existe el viajero, false si no
+            let existViajero = false;
+            for( let [clave, viajero] of listaViajeros){
+            //recorro el mapa, si el cod lo encuentro en el mapa, significa q ya existe el cliente.
+                if(clave == cod){
+                    existViajero = true;
+                }
+            }
+            return existViajero;
+        }
 
         function crearViajero(cod, nombre, apellidos, edad,tieneTarjetaPuntos){
 
-            let existeCliente = false;
-            for(let i = 0; i < listaClientes.size && existeCliente == false; i++){
-                //recorro el mapa, si el cod lo encuentro en el mapa, significa q ya existe el cliente.
-                if(cod == i){
-                    alert("Código de cliente ya existente.");
-                    existeCliente = true;
-                }
-            }
-
-            if(existeCliente == false){ // si no eciste el cliente, lo creo
+           if(!existeViajero(cod)){
                 let viajero = new Viajero(nombre, apellidos, edad);
                 viajero.tieneTarjetaPuntos = tieneTarjetaPuntos;
-                listaClientes.set(cod, viajero);
-            }
+                listaViajeros.set(cod, viajero);
+           }
 
         }
 
         function eliminarViajero(cod){
-
+            if(existeViajero(cod)){
+                listaViajeros.delete(cod);
+            }else{
+                alert("No se pudo eliminar el viajero pues no existe.");
+            }
         }
 
+        function mostrarViajeros(){
+            for( var [clave,viajero] of listaViajeros){
+                alert("Código: " + clave +
+                      "\nNombre: " + viajero.nombre +
+                      "\nApellidos: " + viajero.apellidos + 
+                      "\nEdad: " + viajero.edad +
+                      "\nPaíses visitados: " + viajero.listaPaisesVisitados + 
+                      "\nTiene tarjeta de puntos: " + viajero.tieneTarjetaPuntos);
+            }
+        }
 
+        function indexPaisLista(viajero, pais){
+            let index;  // indice de dónde esta el pais
 
+            // primero hay que controlar cuando se guarda el primer pais. No podemos recorrer el array
+            // cuando es el primero en añadirse, ya q está undefined.
 
+            if(viajero.listaPaisesVisitados.length){            
+                for(let i = 0; i < viajero.listaPaisesVisitados.length; i++){
+                    if(pais == viajero.listaPaisesVisitados[i]){
+                        index = i;
+                    }
+                }
+            }
+
+            return index;   // si no encontró el pais, devuelve undefined
+        }
+
+        function addPaisViajero(cod, pais){
+            if(existeViajero(cod)){
+                let viajero = listaViajeros.get(cod);
+                // antes de añadir el pais, hay q comprobar q no está en la lista.
+                if(indexPaisLista(viajero, pais) == undefined){ // si no encontró país, lo agregamos
+                    viajero.listaPaisesVisitados.push(pais);
+                    alert("País añadido al viajero " + viajero.nombre + " " + viajero.apellidos);
+                }else{
+                    alert("El país ya estaba en la lista.");
+                }
+            }else{
+                alert("No existe el viajero.");
+            }
+        }
+
+        function delPaisViajero(cod, pais){
+            if(existeViajero(cod)){
+                let viajero = listaViajeros.get(cod);
+
+                if(indexPaisLista(viajero, pais) != undefined){ // si se encontró el pais en la lista
+                    viajero.listaPaisesVisitados.splice(indexPaisLista(viajero, pais), 1);
+                    alert("Pais eliminado.");
+                }else{
+                    alert("Pais no encontrado.");
+                }
+            }
+        }
     
     </script>
-
-
-
 
 </body>
 </html>
