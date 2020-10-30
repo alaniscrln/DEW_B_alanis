@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    ACTIVIDAD 3
+
+    Analiza el siguiente código y comenta las sentencias.
+
+    <script type="text/javascript">
+
+        //se crea un objeto constante (no se puede modificar su valor)
+        const tropicalBasket = {
+            // sus propiedades son las de aquí abajo
+        bananas: 3,
+
+        papayas: 0,
+
+        oranges: 7,
+
+        watermelons: 4
+
+        };
+
+        //creamos otro objeto constante con dos propiedades.
+        const smallBasket = {
+
+        strawberries: 8,
+
+        grapes: 12 
+        
+        };
+
+        //se crea un método llamado "getFruitsDescription" que recibe como parámetro "basket"
+        //en "basket"  recibiremos alguna de los dos objetos creados anteriormente.
+        const getFruitsDescription = (basket) => {
+
+            // en la lista "fruitsListed" guardamos las propiedades (solo los nombres, no sus valores) de la "basket".
+            const fruitsListed = Object.keys(basket);
+
+            // en la variable "fruitsAvailable" guardamos las frutas cuyo valor sea mayor que cero. Esto es para saber
+            // cuáles están disponibles.
+            // Lo conseguimos hacer con el método 'filter'. Este recibe como param una fruta ("fruit") de "fruitsListed"
+            // y devuelve las frutas cuyo valor sea mayor que cero. 
+            const fruitsAvailable = fruitsListed.filter((fruit) => {
+                return basket[fruit] > 0;
+            });
+            // devolvemos las frutas que sí hay separadas por una coma.
+            return 'This basket has: ' + fruitsAvailable.join(', ');
+
+        };
+
+        // imprimimos las frutas que tiene cada cesta
+        console.log(getFruitsDescription(tropicalBasket)); 
+        console.log(getFruitsDescription(smallBasket)); 
+
+    </script>
+</body>
+</html>

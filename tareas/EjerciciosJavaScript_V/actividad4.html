@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    Analiza el siguiente código y comenta las sentencias.
+
+    <script type="text/javascript">
+    
+        // se crea el objeto "animal" vacío.
+        const animal = {};
+
+        // se define una propiedad de "animal", llamada "isHuman", y la definimos:
+        // se le da valor por defecto "false", y lo declaramos como no enumerable.
+        Object.defineProperty(animal, 'isHuman', {
+
+            value: false,
+
+            enumerable: false 
+        
+        });
+
+        // creamos un objeto constante "dinosaur" de tipo animal
+        const dinosaur = Object.create(animal);
+
+        // definimos una propiedaad a "dinosaur" (solo a esta, "animal" no la recibe), llamada
+        // "isExtinct", y se le da como valor por defecto 'true' y lo declaramos como no
+        // enumerable
+        Object.defineProperty(dinosaur, 'isExtinct', {
+
+            value: true,
+
+            enumerable: false 
+            
+        });
+
+        // creamos un objeto constante "tRex" de tipo "dinosaur"
+        const tRex = Object.create(dinosaur);
+
+        // se define una propiedad "legs" al objeto "tRex", cuyo valor es '4' y se declara como no 
+        // enumerable
+        Object.defineProperty(tRex, 'legs', {
+
+            value: 4,
+
+            enumerable: false 
+            
+        });
+
+        //se crea un método "getAllPropertiesOf" q recibe como param "something", que será un obj de los anteriores
+        function getAllPropertiesOf(something) {
+
+            // se crea un array donde guardaremos las propiedades del objeto
+            let properties = [];
+            // en proto copiamos "something"
+            let proto = something;
+
+            // el buble se repite hasta que "proto" deje de ser un prototipo
+            while (proto !== Object.prototype) {
+
+                // en el array guardamos los nombres de las propiedades del obj que hayamos recibido como param. 
+                // se utiliza el método "concat" para que en cada iteración se añada la info  y no se pise la anterior.
+                properties = properties.concat(Object.getOwnPropertyNames(proto));
+
+                // cambiamos el valor de "proto" a su prototipo propio. Esto se hace para poder acceder a las propiedades
+                // de sus objetos padre ("dinosaur" y "animal". Esas propiedades se guardan en el prototipo y no en la def
+                // del objeto en sí, por eso es necesario acceder de esta forma)
+                proto = Object.getPrototypeOf(proto);     
+            
+            }
+
+            // devolvemos el array con las propiedades
+            return properties; 
+            }
+
+        // mosstramos por consola las propiedades del objeto "tRex"
+        console.log(getAllPropertiesOf(tRex));
+    
+    
+    </script>
+
+</body>
+</html>
