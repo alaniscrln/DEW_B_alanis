@@ -37,7 +37,7 @@
 
         class CuentaBancaria{
             constructor(titular, saldo){    // recibimos como titular un objeto persona
-                this.titular = titular;
+                this.titular = new Persona(titular.nombre, titular.apellido1, titular.apellido2);
                 this.saldo = saldo;
             }
 
@@ -46,12 +46,13 @@
             }
         }
 
+        //--------------------------------------------------------------------------------------------------------------------
+
         let nombre = prompt("Nombre: ", "Alanis Carolina");
         let apellido1 = prompt("Apellido 1: ", "Simoes");
         let apellido2 = prompt("Apellido 2: ", "Villalonga");
 
         let persona = new Persona(nombre, apellido1, apellido2);
-
 
         let saldo = prompt("Saldo de la cuenta: ", "300");
 
