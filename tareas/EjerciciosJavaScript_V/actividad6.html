@@ -34,8 +34,150 @@
     creados.
 
     <script type="text/javascript">
-    
-        
+
+        //guardar a los clientes:
+        let mapaViajeros = new Map();
+
+        //-----------------------------------------------------
+
+        class Persona {
+            constructor(nombre, apellidos, edad) {
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+                this.edad = edad;
+            }
+
+            mostrarNombreCompleto() {
+                return this.apellidos + ", " + this.nombre;
+            }
+        }
+
+        class Viajero extends Persona {
+            constructor(nombre, apellidos, edad, tieneTarjetaPuntos) {
+                super(nombre, apellidos, edad);
+                this.tieneTarjetaPuntos = tieneTarjetaPuntos;
+                this.listaPaisesVisitados = new Array();
+            }
+
+        }
+
+        //-----------------------------------------------------
+
+        // El try catch lo usamos para evitar que esté algún dato mal introducido.
+        try {
+            crearViajero(1, "eduardo", "da silva", 29, false);
+            crearViajero(2, "alanis", "simoes villalonga", 21, true);
+            mostrarViajeros();
+            crearViajero(3, "cristina", "castro cabrera", 24, true);
+            mostrarViajeros();
+            //linea para probar el trycatch
+            //eliminarViajero(a);
+            eliminarViajero(3);
+            addPaisViajero(2, "Venezuela");
+            addPaisViajero(2, "España");
+            mostrarViajeros();
+            delPaisViajero(2, "España");
+            mostrarViajeros();
+        }catch(error){
+            alert("¡Datos mal introducidos!\n" + error);
+        }
+
+        //-----------------------------------------------------
+
+        function existeViajero(cod) {
+            // devolverá true si existe el viajero, false si no
+            let existeViajero = false;
+            for (let [clave, viajero] of mapaViajeros) {
+                //recorro el mapa, si el cod lo encuentro en el mapa, significa q ya existe el cliente.
+                if (clave == cod) {
+                    existeViajero = true;
+                }
+            }
+            return existeViajero;
+        }
+
+        function crearViajero(cod, nombre, apellidos, edad, tieneTarjetaPuntos) {
+
+            if (!existeViajero(cod)) {
+                let viajero = new Viajero(nombre, apellidos, edad, tieneTarjetaPuntos);
+                mapaViajeros.set(cod, viajero);
+            } else {
+                alert("Viajero no creado, código ya existente.");
+            }
+
+        }
+
+        function eliminarViajero(cod) {
+            if (existeViajero(cod)) {
+                // con el cod (key) buscamos al viajero dentro del mapa
+                mapaViajeros.delete(cod);
+                alert("Viajero eliminado.");
+            } else {
+                alert("No se pudo eliminar el viajero pues no existe.");
+            }
+        }
+
+        function mostrarViajeros() {
+            for (var [clave, viajero] of mapaViajeros) {
+                alert("Código: " + clave +
+                    "\nNombre: " + viajero.nombre +
+                    "\nApellidos: " + viajero.apellidos +
+                    "\nEdad: " + viajero.edad +
+                    "\nPaíses visitados: " + viajero.listaPaisesVisitados +
+                    "\nTiene tarjeta de puntos: " + viajero.tieneTarjetaPuntos);
+            }
+        }
+
+        function indexPaisLista(viajero, pais) {
+            let index;  // indice de dónde esta el pais en el array
+
+            // primero hay que controlar al guardar el primer pais. No podemos recorrer el array
+            // cuando es el primero en añadirse, ya q está undefined.
+
+            if (viajero.listaPaisesVisitados.length != undefined) {
+                for (let i = 0; i < viajero.listaPaisesVisitados.length; i++) {
+                    if (pais == viajero.listaPaisesVisitados[i]) {
+                        index = i;
+                    }
+                }
+            }
+            // si encontró el país en la lista, "index" tiene como valor un num (sería la pos de ese país en la lista)
+            return index;   // si no encontró el pais, devuelve undefined
+        }
+
+        function addPaisViajero(cod, pais) {
+            if (existeViajero(cod)) {
+                let viajero = mapaViajeros.get(cod);
+                // antes de añadir el pais, hay q comprobar q no está en la lista.
+                if (indexPaisLista(viajero, pais) == undefined) { // si no encontró el país en la lista, lo agregamos
+                    viajero.listaPaisesVisitados.push(pais);
+                    alert("País añadido al viajero " + viajero.nombre + " " + viajero.apellidos);
+                } else {
+                    alert("El país ya estaba en la lista.");
+                }
+            } else {
+                alert("No existe el viajero.");
+            }
+        }
+
+        function delPaisViajero(cod, pais) {
+            if (existeViajero(cod)) {
+                let viajero = mapaViajeros.get(cod);
+
+                if (indexPaisLista(viajero, pais) != undefined) { // si se encontró el pais en la lista
+                    viajero.listaPaisesVisitados.splice(indexPaisLista(viajero, pais), 1);
+                    /*
+                    El método splice funciona de la sgt manera:
+                    splice("pos del array desde la q queremos borrar", "cantidad de elementos que queremos borrar desde la pos");
+                    
+                    */
+                    alert("Pais eliminado.");
+                } else {
+                    alert("Pais no encontrado.");
+                }
+            }
+        }
+
 
     </script>
 </body>

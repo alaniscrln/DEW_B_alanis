@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     Realiza la actividad 1 utilizando clases.
 
     ACTIVIDAD 1
 
     Crea un script donde se realicen las siguientes acciones:
-    
+
     a) Pedir al usuario un nombre de titular, apellidos de titular y saldo de la cuenta.
-    
-    b) Crear un nuevo objeto cuentaBancaria que se inicializará con los datos facilitados por el usuario. 
-    
-    c) Mostrar un mensaje informando de que se ha creado la nueva cuenta bancaria y de los datos asociados a la cuenta bancaria creada.
+
+    b) Crear un nuevo objeto cuentaBancaria que se inicializará con los datos facilitados por el usuario.
+
+    c) Mostrar un mensaje informando de que se ha creado la nueva cuenta bancaria y de los datos asociados a la cuenta
+    bancaria creada.
 
     <script type="text/javascript">
 
-    
-        class Persona{
-            constructor(nombre, apellido1, apellido2){
+        // es importante que al usar los atrib de una clase dentro de la misma, las llamemos siempre
+        // con el this. Si no, dará errores con los objetos (undefined).
+
+        class Persona {
+            constructor(nombre, apellido1, apellido2) {
                 this.nombre = nombre;
                 this.apellido1 = apellido1;
                 this.apellido2 = apellido2;
             }
 
-            nombreCompleto(){
-                return this.nombre + " " + this.apellido;
+            nombreCompleto() {
+                return this.apellido1 + " " + this.apellido2 + ", " + this.nombre;
             }
         }
 
-        class CuentaBancaria{
-            constructor(titular, saldo){    // recibimos como titular un objeto persona
-                this.titular = new Persona(titular.nombre, titular.apellido1, titular.apellido2);
+        class CuentaBancaria {
+            constructor(titular, saldo) {    // recibimos como titular un objeto persona
+                this.titular = titular;
                 this.saldo = saldo;
             }
 
-            mostrarDatos(){
-                return "Titular: " + titular.nombreCompleto() + "\nSaldo: " + saldo;
+            mostrarDatos() {
+                return "Titular: " + this.titular.nombreCompleto() + "\nSaldo: " + this.saldo;
             }
         }
 
@@ -51,11 +56,9 @@
         let nombre = prompt("Nombre: ", "Alanis Carolina");
         let apellido1 = prompt("Apellido 1: ", "Simoes");
         let apellido2 = prompt("Apellido 2: ", "Villalonga");
-
-        let persona = new Persona(nombre, apellido1, apellido2);
-
         let saldo = prompt("Saldo de la cuenta: ", "300");
 
+        let persona = new Persona(nombre, apellido1, apellido2);
         let cuenta = new CuentaBancaria(persona, saldo);
 
         alert("¡Cuenta creada!\n" + cuenta.mostrarDatos());
@@ -63,4 +66,5 @@
     </script>
 
 </body>
+
 </html>
