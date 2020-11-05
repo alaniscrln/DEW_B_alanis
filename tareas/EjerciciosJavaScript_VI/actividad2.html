@@ -13,7 +13,7 @@
         concreta que el usuario haya introducido. Muestra la cantidad de páginas del historial.
 
         <script type="text/javascript">
-            var pagina = prompt("Introduce la pag a la que quieras ir:", "www.google.es");
+            var pagina = prompt("Introduce a que página quieres ir en número:", "-1");
             
             
             function irALaPag(){
@@ -23,11 +23,13 @@
 
         <form>
 
-            <input type="button" value="pag anterior" onclick="history.back()"/>
+            <input type="button" value="pag anterior" onclick="window.history.back()"/>
             <br/>
-            <input type="button" value="pag siguiente" onclick="history.forward()"/>
+            <input type="button" value="pag siguiente" onclick="window.history.forward()"/>
             <br/>
-            <input type="button" value="ir a la pag..." onclick="history.go(pagina)"/>            
+            <!--Con el método go podemos ir a la página que queramos dentro de la ventana en la que estamos. 
+                Siendo 0 la actual, -1 la anterior, 1 la siguiente, etc-->
+            <input type="button" value="ir a la pag..." onclick="window.history.go(pagina)"/>            
 
         </form>
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    Crea un botón en un documento html que al pulsar, el script averigüe si el usuario está conectado a 
+    Internet y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma y si tiene 
+    activadas o no las cookies y Java.
+
+    <script type="text/javascript">
+    
+        function info(){
+            if(navigator.onLine){   // si está conectado a internet
+                window.open("./actividad3_1.html");
+            }
+        
+        }
+    
+    </script>
+
+    <form>
+        <input type="button" value="Púlsame" onclick="info()">
+    </form>
+
+
+</body>
+</html>

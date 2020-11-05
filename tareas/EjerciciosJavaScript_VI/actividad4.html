@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    Usando location, crea un botón en un documento html que al pulsar, 
+    el script asigne la web www.google.com y se pueda ver el historial de la ventana. 
+    Crea otro botón igual, pero que no se pueda ver el historial de la venta.
+
+    <script type="text/javascript">
+    
+        function cambiar(){
+            location.replace("https://www.google.es");
+        }
+    
+        function cambiarEInfo(){
+            location.replace("https://www.google.es");
+            console.log(window.history);
+        }
+    </script>
+
+    <form>
+        <input type="button" value="Google e historial" onclick="cambiarEInfo()">
+        <br>
+        <input type="button" value="Google" onclick="cambiar()">
+
+    </form>
+
+
+</body>
+</html>
