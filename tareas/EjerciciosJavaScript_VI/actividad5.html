@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
-    Averigua utilizando el objeto screen, el tamaño de la barra de tareas de Windows. 
+
+    Averigua utilizando el objeto screen, el tamaño de la barra de tareas de Windows.
     Crea un botón en un documento html que al pulsar, abra una nueva ventana y muestre esa información.
 
-    
+    <script type="text/javascript">
+
+        function abrirVentana() {
+            // calculo el tmñ de la barra de tareas. height incluye la barra, availheight no, por eso se resta.
+            let str = "ancho: ";
+            str += screen.width;
+            str += "\nalto: ";
+            str += screen.height - screen.availHeight;
+
+            var myWindow = window.open("", "tamaño barra tareas", "width=200,height=100");
+            myWindow.document.write("<p>" + str + "</p>");
+        }
+
+    </script>
+
+    <form>
+        <input type="button" value="tamaño barra de tareas" onclick="abrirVentana()" />
+    </form>
 </body>
+
 </html>

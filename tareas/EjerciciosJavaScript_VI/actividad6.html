@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Cree una página web donde aparezcan los siguientes botones:
+
+    Abrir Ventana: abrirá una ventana de tamaño 400px*400px con la dirección www.google.es. La nueva ventana deberá
+    aparecer centrada en la pantalla.
+
+    Cerrar Ventana: deberá cerrar la ventana que se acaba de crear. Si la ventana aún no se ha creado o bien el usuario
+    la cerró, deberá mostrar un error que diga “No hay ventana que cerrar”.
+
+    Ampliar: modificará el tamaño de la ventana aumentando tanto el ancho como en 30px. Se mostrará un mensaje de error
+    cuando no se pueda ampliar el alto o el ancho. NOTA: para que funcione este y los siguientes apartados tiene que
+    abrir una ventana en blanco, para ello quite la dirección www.google.es
+
+    Reducir: modificará el tamaño de la ventana disminuyendo tanto el ancho como en 30px. Se mostrará un mensaje de
+    error cuando no se pueda reducir el alto o el ancho.
+
+    Mover: Ubicará la pantalla en la posición indicada previamente por el usuario (x e y). Los valores tendrán que ser
+    enteros positivos. Antes de mover la nueva pantalla tendrá que comprobar que la nueva posición de la ventana es
+    posible teniendo en cuenta tanto la posición como su alto y ancho y el tamaño de la pantalla.
+
+    <script type="text/javascript">
+
+        let ventana;
+        function abrirVentana(w, h) {   //w weight, h height
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            /*ventana = window.open("https://www.google.es", "Google",
+                'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+            */
+            ventana = window.open("", "",
+                'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+            return ventana;
+        }
+
+        function cerrarVentana() {
+            if (ventana) {
+                ventana.close();
+            } else if (!ventana) {      // si no se escribe la condicion neg, no funciona, no se porq
+                alert("No hay ventana que cerrar");
+            }
+        }
+
+        function ampliarVentana() {
+            try {
+                ventana.resizeBy(30, 30);
+            } catch (error) {
+                alert("No se puede ampliar más." + error.message);
+            }
+        }
+
+        function reducirVentana() {
+            let firstWidth = ventana.screen.width;
+            let firstHeight = ventana.screen.height;
+            ventana.resizeBy(-30, -30);
+            if(ventana.screen.width === firstWidth || ventana.screen.height === firstHeight){
+                alert("No se puede reducir más");
+            }
+        }
+
+        function moverVentana(x, y){    //sin terminar
+            ventana.moveto(x, y);
+        }
+
+    </script>
+
+    <form>
+        <input type="button" value="Abrir Ventana" onclick="abrirVentana(400, 400)" />
+    </form>
+
+    <br />
+
+    <form>
+        <input type="button" value="Cerrar Ventana" onclick="cerrarVentana()" />
+    </form>
+
+    <br />
+
+    <form>
+        <input type="button" value="Ampliar Ventana" onclick="ampliarVentana()" />
+    </form>
+
+    <br />
+
+    <form>
+        <input type="button" value="Reducir Ventana" onclick="reducirVentana()" />
+    </form>
+
+</body>
+
+</html>
