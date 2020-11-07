@@ -50,27 +50,59 @@
         }
 
         function ampliarVentana() {
-            try {
+
+            if (((ventana.innerWidth + 30) < ventana.screen.availWidth)
+                && ((ventana.innerHeight + 30) < ventana.screen.availHeight)) {
                 ventana.resizeBy(30, 30);
-            } catch (error) {
-                alert("No se puede ampliar más." + error.message);
+                // hay q cambiar los valores manualmente porq resizeBy no actualiza las propiedades width y height
+                ventana.innerWidth += 30;
+                ventana.innerHeight += 30;
+            } else {
+                alert("No se puede ampliar más.");
             }
         }
 
         function reducirVentana() {
-            let firstWidth = ventana.screen.width;
-            let firstHeight = ventana.screen.height;
             ventana.resizeBy(-30, -30);
-            if(ventana.screen.width === firstWidth || ventana.screen.height === firstHeight){
+            // hay q cambiar los valores manualmente porq resizeBy no actualiza las propiedades width y height
+            ventana.innerWidth -= 30;
+            ventana.innerHeight -= 30;
+            if (ventana.innerHeight < 0 || ventana.innerWidth < 0) {
                 alert("No se puede reducir más");
             }
         }
 
-        function moverVentana(x, y){    //sin terminar
-            ventana.moveto(x, y);
+        function moverVentana(x, y) {
+            try {
+                if (x >= 0 && y >= 0) { //q las medidas sean positivas
+                    if (x <= (ventana.screen.availWidth - ventana.innerWidth)
+                        && y <= (ventana.screen.availHeight - ventana.innerHeight)) {
+                        // para q las coordenadas no sean fuera de la pantalla.
+                        // se resta con las medidas de la ventana para que siempre esté visible
+                        ventana.moveTo(x, y);
+                    } else {
+                        alert("Fuera de lo posible");
+                    }
+
+                } else {
+                    alert("las coordenadas deben ser números enteros positivos.");
+                }
+            } catch (error) {
+                alert("Ventana no existente" + error);
+            }
+        }
+
+        function getX() {
+            return prompt("X: ", 25);
+        }
+
+        function getY() {
+            return prompt("Y: ", 25);
         }
 
     </script>
+    
+    <br />
 
     <form>
         <input type="button" value="Abrir Ventana" onclick="abrirVentana(400, 400)" />
@@ -92,6 +124,12 @@
 
     <form>
         <input type="button" value="Reducir Ventana" onclick="reducirVentana()" />
+    </form>
+
+    <br />
+
+    <form>
+        <input type="button" value="Mover Ventana" onclick="moverVentana(getX(), getY())" />
     </form>
 
 </body>

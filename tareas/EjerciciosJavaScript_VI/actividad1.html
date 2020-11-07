@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 
-    Crea dos botones en un documento html que al pulsar, uno abra una nueva ventana de ancho 200px y alto 100px con la siguiente información:
+    Crea dos botones en un documento html que al pulsar, uno abra una nueva ventana de ancho 200px y alto 100px con la
+    siguiente información:
 
-    Nombre de la ventana, Ancho externo, Alto externo, Ancho interno, Alto interno, Scroll H, Scroll V, Distancia desde la izquierda y Distancia desde arriba.
-    
+    Nombre de la ventana, Ancho externo, Alto externo, Ancho interno, Alto interno, Scroll H, Scroll V, Distancia desde
+    la izquierda y Distancia desde arriba.
+
     Y el otro botón que sea capaz de cerrar esa nueva ventana abierta.
-
 
     <script type="text/javascript">
         let ventana;
-    
-        function abrirNuevaVentana(){
-            ventana = window.open("./actividad1_1.html", height = 100, width=200);
+
+        function abrirNuevaVentana() {
+            ventana = window.open("", "Información ventana", height = 100, width = 200);
+
+            // no entiendo por q todos los valores son 0. 
+            ventana.document.write("Nombre de la ventana: " + ventana.name +
+                "<br/>Ancho externo: " + ventana.outerWidth +
+                "<br/>Alto externo: " + ventana.outerHeight +
+                "<br/>Ancho interno: " + ventana.innerWidth +
+                "<br/>Alto interno: " + ventana.innerHeight +
+                "<br/>Scroll X: " + ventana.scrollX +
+                "<br/>Scroll Y: " + ventana.scrollY +
+                "<br/>Distancia desde la izquierda: " + ventana.screenLeft +
+                "<br/>Distancia desde arriba: " + ventana.screenTop);
         }
-        
-        function cerrarVentana(){
+
+        function cerrarVentana() {
             ventana.close();
         }
+
     </script>
 
     <form>
-        <input type="button" value="abre la ventana" onclick="abrirNuevaVentana()"/>
-        <br/>
-        <input type="button" value="cierra la ventana" onclick="cerrarVentana()"/>
+        <input type="button" value="abre la ventana" onclick="abrirNuevaVentana()" />
+        <br />
+        <input type="button" value="cierra la ventana" onclick="cerrarVentana()" />
     </form>
 
 </body>
+
 </html>
