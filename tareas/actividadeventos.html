@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id= "wrapper-img">
+
+    </div>
+
+        <input type="button" value="eliminar foto" onclick="delImg()"  />
+
+        <input type="button" value="crear foto" onclick="addImg()"  />
+
+    <script>
+
+        function addImg(){
+
+            var imagen = document.createElement("img");
+            imagen.className = "img-100";
+            imagen.id = "imagen";
+            imagen.src = "./gato.jpg";
+            document.getElementById("wrapper-img").appendChild(imagen);
+        }   
+
+
+        function delImg() {
+            var elem = document.getElementById('imagen');
+            //    elem.parentNode.removeChild(elem);
+            //return false;
+            elem.remove();
+        }
+    
+    
+    </script>
+        
+
+</body>
+</html>

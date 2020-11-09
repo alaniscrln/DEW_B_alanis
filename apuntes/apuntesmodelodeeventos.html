@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<h6 id="w3c">Manejador5</h6>
+<h6 id="w3canonima">Manejador5</h6>
+
+<script>
+
+    //alhacer click, hace el metodo saludarunavez ( no se puede pasar param). el false puede no añadirse.
+    //UTILIDAD: mismo elemento, con dos manejadores distintos
+    document.getElementById("w3c").addEventListener("click", saludarUnaVez, false);
+    document.getElementById("w3c").addEventListener("click", colorearse, false);
+
+    function saludarUnaVez(){
+        alert("Hola mundo");
+        document.getElementById("w3c").removeEventListener("click", saludarUnaVez);
+    }
+
+    function colorearse(){
+        document.getElementById("w3c").style.color="purple";
+    }
+
+
+    //CON FUNCION ANONIMA:
+
+
+    document.getElementById("w3canonima").addEventListener("click", function (){
+        this.style.background="#c0c0c0";    //en microsoft se usa attachEvent()
+    });
+</script>
+
+<h5>obtener info de un evento</h5>
+<h6 id="eventos">boton 1</h6>
+<h6 id="parrafo1">boton 2</h6>
+<h6 id="parrafo2">boton 3</h6>
+
+
+<script>
+    document.getElementById("eventos").addEventListener("mouseover", manejador);
+    document.getElementById("eventos").addEventListener("mouseout", manejador);
+
+    document.getElementById("parrafo1").addEventListener("click", saludo);
+    document.getElementById("parrafo2").addEventListenerdevice-width("click", saludo);
+
+
+    function manejador(e){
+
+// el navegador crea a 'e' automaticamente como un obj evento
+
+        if(!e) e = window.event; // esto es para microsoft, pues este nav no crea el vento automaticamente.
+        switch(e.type){ // tipo de evento
+            case "mouseover": 
+                this.style.color = "purple";
+                break;
+            case "mouseout": 
+                this.style.color="green";
+                break;
+        }
+    }
+
+
+// e.target mes la id del elemento sacado del html
+    function saludo(e){
+        if(!e)  e = window.event;
+        if(e.target.id == "parrafo1"){
+            alert("Has pulsado el primer boton" + e.target.id);
+        }else if(e.target.id == "parrafo2"){
+            alert("has pulsado el segundo boton " + e.target.id);
+        }
+
+
+    }
+
+
+</script>
+
+
+
+</body>
+</html>
