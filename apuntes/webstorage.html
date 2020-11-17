@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+
+        webstorage:    almacena datos localmente en el navegadro de l usu. es mas seguro y almacena ma sinfo
+        todas las pags acceden al mismo origen
+    -->
+<script>
+    if(typeof(Storage) !== "undefined"){
+        // para comprobar si el nav soporta webstorage
+    }
+
+//localstorage: al copiar y cerrar la venana, sigue l ainfo porq esta almacnado en local. los dato s no tienen
+//fecha de expiracion. tambn va por pair. solo soporta texto 
+
+    localStorage.setItem("usuario", "Alanis"); // añadir datos
+    localStorage.getItem("usuario"); // obtener dato guardado
+
+
+
+
+//se mantiene los datos unicametne en la ventana: sessionstorage. igual q localstorage. ejemplos:
+
+function contador(){
+    if(!sessionStorage.getItem("contador")){
+        sessionStorage.setItem("contador", "0");
+    }
+    document.getElementById("contador").innerHTML = "Contador: " + sessionStorage.getItem("contador");
+}
+
+function incrementar(){
+    sessionStorage.setItem("contador", Number(sessionStorage.getItem("contador") ) + 1);
+}
+
+// borrAR ITEM del localstorage:
+localStorage.removeItem("usuario");
+//borrar todo el localstorage:
+
+localStorage.clear();
+
+
+
+</script>
+
+</body>
+</html>

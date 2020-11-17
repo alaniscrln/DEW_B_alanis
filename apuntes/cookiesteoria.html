@@ -1,0 +1,38 @@
+cookies son datos almacenafod en el ordenador en un archivo de texto. 
+hay fecha de expiracion, 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        Se crean como pair, nmbre y valor. tieens sus propiedades: fecha de expiracion (utc), ruta, dominio, etc
+        existen dos formas de crear una cookie
+        forma extendida:
+    -->
+    <script>
+    document.cookie = "usuario = Alanis; expires= Thu, 20 Nov 2020 12:00:00 UTC; path =/; "; // opcion A
+        // forma simple :
+    document.cookie = "usuario = Alanis";
+
+    //ver cookies:
+
+    var miCookie = document.cookie;
+
+    // modificar cookie
+    // se "modiifica" sieempre y cuando el nombre del par sea el mismo.
+
+    //borrar cookie 
+    // se borra ponienole una fecha de expires vieja
+    document.cookie = "usuario = Alanis; expires= Thu, 20 Nov 1960 12:00:00 UTC";
+
+    </script>
+    
+</body>
+</html>
