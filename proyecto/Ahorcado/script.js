@@ -3,9 +3,33 @@
 let palabraJugada = ""; // palabra con la que se juega
 let palabraMostrada = ""; // string que ve el jugador en pantalla
 let palabras = new Array(); // array donde se guardan las palabras existentes como Productos
-palabras.push(new Productos("Parque Jurasico"));
 
 let posLetra = new Array(); // array para ir guardando las posiciones de la letra elegida
+
+
+class Jugador {
+    constructor (nombre, puntos){
+        this.nombre = nombre;
+        this.puntos = puntos;
+    }
+
+    getNombre(){
+        return this.nombre;
+    }
+
+    getPuntos(){
+        return this.puntos;
+    }
+
+    setNombre(nombre){
+        this.nombre = nombre;
+    }
+
+    setPuntos(){
+        this.puntos += 1;
+    }
+
+}
 
 
 class Productos{
@@ -61,6 +85,15 @@ class Productos{
 
 }
 
+palabras.push(new Productos("Parque Jurasico"));
+
+// crear jugador
+
+function crearJugador(nombre){
+    let jugador = new Jugador(nombre, 0);
+
+}
+
 // guardar una palabra en el array
 function guardarPalabra( p ){
     try{
@@ -86,9 +119,9 @@ function palabraRandom(){
 }
 
 // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
-function coincideLetra( letra ){
+function posicionLetra( letra ){
 
-    posLetra = [];  // vaciar el array para que no haya problemas con otras pos
+    posLetra = [];  // vaciar el array para que no haya problemas con otras pos de otras letras
 
     for(let i =0; i < palabraJugada.length; i++){
         if(palabraJugada.charAt(i) == letra){
@@ -101,7 +134,7 @@ function coincideLetra( letra ){
 function pintarGuiones(){
     for(let i = 0; i < palabraJugada.length; i++){
         if(palabraJugada.charAt(i) != ' ' ){
-            palabraMostrada += "_";
+            palabraMostrada += "-";
         }else{
             palabraMostrada += " ";
         }
@@ -166,8 +199,11 @@ si se quiere dejar de jugar, se borran los datos y se muestra mensaje
 
 //por mi crearia una clase jugador, pero el profe quiere q se guarde en cookies y en webstorage... asi q no se si crearla o no
 
-function guardarJugador(jugador){
+function guardarJugador(jugador){   // jugador es el nombre del jugador
 
+    document.cookie = "jugador-" + jugador + " = " + jugador; // jugador-alanis = alanis
+    localStorage.setItem("jugador-" + jugador, jugador);
+    /*
     if(document.cookie == null){
         document.cookie = "jugador1 = " + jugador;
         localStorage.setItem("jugador1", jugador);        
@@ -175,19 +211,25 @@ function guardarJugador(jugador){
         document.cookie = "jugador2 = " + jugador;
         localStorage.setItem("jugador2", jugador);
     }
-
+*/
 }
 
-function guardarVictoriaJug1(jugador, numVictorias){
+function guardarVictoriaJugador(jugador, numVictorias){ // jugador es el nombre del jugador
+
+    document.cookie = "jugador-" + jugador + " = " + jugador + "; victorias = " + numVictorias;
+    localStorage.setItem("victoriasJugador-"  + jugador, numVictorias);
+  
+    /*
     document,cookie = "jugador1 = " + jugador + "; victorias = " + numVictorias;
     localStorage.setItem("victoriasJugador1", numVictorias);
+*/
 }
 
-
+/*
 function guardarVictoriaJug2(jugador, numVictorias){
-    document,cookie = "jugador2 = " + jugador + "; victorias = " + numVictorias;
+    document.cookie = "jugador2 = " + jugador + "; victorias = " + numVictorias;
     localStorage.setItem("victoriasJugador2", numVictorias);
 }
 
-
+*/
 

@@ -47,9 +47,12 @@ const teclado = {   //elemento teclado
             btn.textContent = letra;
             btn.addEventListener("click", () => {
                 this.propiedades.valor = letra;
-                //escribir letra en la zona de texto
-                zonaTexto = document.querySelector(".usa-teclado");
-                zonaTexto.textContent = this.propiedades.valor;
+
+                posicionLetra( letra );
+                pintarLetra( letra );
+                console.log(palabraMostrada);
+                console.log(posLetra);
+             
             });
 
             fragment.appendChild(btn);  // guardamos en fragment cada btn de letra
@@ -61,8 +64,11 @@ const teclado = {   //elemento teclado
         });
 
         return fragment;
-    }
+    },
 
+    obtenerLetra(){
+        return this.propiedades.valor;
+    }
 };
 
 window.addEventListener("load", teclado.init());
