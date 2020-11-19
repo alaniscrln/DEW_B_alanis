@@ -6,34 +6,21 @@
     padding: 5px 0;
     background: #470b69;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    user-select: none;
 }
 
-.teclado-teclas{
+.container-teclas{
     text-align: center;
 }
 
 .tecla{
-    height: 45px;
-    width: 6%;  /*para q sesa responsive*/
+    height: 50px;
+    width: 6%;  /*para q sea responsive*/
     max-width: 90px;
     margin: 3px;
-    border-radius: 4px;
-    border: none;
+    border-radius: 6px;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: 1.05rem;
-    outline: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
+    font-size: 17px;
     justify-content: center;
-    vertical-align: top;
-    padding: 0;
-    position: relative;
-}
-
-.tecla-ancha{
-    width: 36%;
-    max-width: 500px;
+    outline: none;
 }
