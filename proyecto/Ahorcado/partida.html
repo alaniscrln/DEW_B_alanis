@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,30 +9,27 @@
     <link rel="stylesheet" href="teclado/teclado.css">
     <link rel="stylesheet" href="partidacss.css">
 </head>
+
 <body>
 
-    <div id="contenedor-palabraMostrada"></div>
-
-        
-    <!--------------------------------------------------------------------------------------------------------------------->
-  
-    <script src="script.js"></script>
-    <script src="teclado/teclado.js"></script>
-    <script>      
-            guardarPalabra("esto es una prueba");
-            pintarGuiones();
-                
-            //crear elemento guiones q se muestra en pantalla
-            let guiones = document.createElement("h1");
-            guiones.setAttribute("id", "guiones");
-            guiones.textContent = palabraMostrada; 
-            document.getElementById("contenedor-palabraMostrada").appendChild(guiones);
-
-            console.log( teclado.obtenerLetra() );
-            posicionLetra(teclado.obtenerLetra());
-
-    </script>
+    <div id="container-palabraMostrada">
+        <p id="guiones"></p>
+    </div>
     
-       
+
+    <!--------------------------------------------------------------------------------------------------------------------->
+
+    <script src="metodos.js"></script>
+    <script src="teclado/teclado.js"></script>
+    <script>
+        guardarPalabra("esto es una prueba");
+        pintarGuiones();     
+        //mostrar palabra jugada en pantalla
+        document.getElementById("guiones").textContent = palabraMostrada;
+        
+    </script>
+
+
 </body>
+
 </html>

@@ -130,7 +130,7 @@ function posicionLetra( letra ){
     }
 }
 
-// pintar los guiones en pantalla
+// pintar los guiones en palabraMostrada
 function pintarGuiones(){
     for(let i = 0; i < palabraJugada.length; i++){
         if(palabraJugada.charAt(i) != ' ' ){
@@ -148,7 +148,7 @@ function setCharAt(texto, pos, letra) { // texto a cambiar, pos donde queremos c
 }
 
 // pintar letra en pantalla
-function pintarLetra( letra ){
+function pintarLetraString( letra ){
 
     for(let i = 0; i < posLetra.length; i++){
         palabraMostrada = setCharAt(palabraMostrada, posLetra[i], letra);

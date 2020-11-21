@@ -47,12 +47,13 @@ const teclado = {   //elemento teclado
             btn.textContent = letra;
             btn.addEventListener("click", () => {
                 this.propiedades.valor = letra;
+                // metodos posicionLetra y pintar letra de "metodos.js"
+                posicionLetra(letra);
+                pintarLetraString(letra);
+                
+                //crear div donde se mostrara la palabra jugada y se actualizara cada vez q se pulse una tecla
 
-                posicionLetra( letra );
-                pintarLetra( letra );
-                console.log(palabraMostrada);
-                console.log(posLetra);
-             
+                this.pintar();
             });
 
             fragment.appendChild(btn);  // guardamos en fragment cada btn de letra
@@ -66,9 +67,20 @@ const teclado = {   //elemento teclado
         return fragment;
     },
 
-    obtenerLetra(){
-        return this.propiedades.valor;
+    pintar() {
+
+        //para que solo aparezca una vez en pantalla
+        document.getElementById("guiones").remove();
+       
+        //crear elemento
+        let guiones = document.createElement("p");
+        guiones.setAttribute("id", "guiones");
+        guiones.textContent = palabraMostrada;
+
+        //crear estructura
+        document.getElementById("container-palabraMostrada").appendChild(guiones);
     }
+
 };
 
 window.addEventListener("load", teclado.init());
