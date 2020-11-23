@@ -1,4 +1,4 @@
-.teclado{
+#teclado{
     position: fixed;    /* se queda fijo aunq deslicemos la pantalla*/
     left: 0;    /*posicionarlo abajo del todo*/
     bottom: 0;

@@ -5,7 +5,7 @@ let palabraMostrada = ""; // string que ve el jugador en pantalla
 let palabras = new Array(); // array donde se guardan las palabras existentes como Productos
 
 let posLetra = new Array(); // array para ir guardando las posiciones de la letra elegida
-
+let errores = 0; 
 
 class Jugador {
     constructor (nombre, puntos){

@@ -13,7 +13,7 @@ const teclado = {   //elemento teclado
     init() {
         // crear contenedores
         this.elementos.containerTeclado = document.createElement("div");
-        this.elementos.containerTeclado.classList.add("teclado");
+        this.elementos.containerTeclado.setAttribute("id", "teclado");
         this.elementos.containerTeclas = document.createElement("div");
         this.elementos.containerTeclas.classList.add("container-teclas");
 
@@ -45,15 +45,37 @@ const teclado = {   //elemento teclado
             btn.classList.add("tecla");
 
             btn.textContent = letra;
-            btn.addEventListener("click", () => {
+            btn.addEventListener("click", (btn) => {
                 this.propiedades.valor = letra;
-                // metodos posicionLetra y pintar letra de "metodos.js"
-                posicionLetra(letra);
-                pintarLetraString(letra);
-                
-                //crear div donde se mostrara la palabra jugada y se actualizara cada vez q se pulse una tecla
+                // metodos del archivo "metodos.js"
 
-                this.pintar();
+                if (errores < 6) {
+
+                    if (!this.haGanado()) {
+                        posicionLetra(letra);   // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
+                        if (posLetra.length == 0) { // si está vacio, significa q la letra era erronea
+                            errores += 1;
+                            this.pintarLetrasUsadas(letra);
+                        } else{
+                            pintarLetraString(letra);   // modifico string de palabraMostrada
+                            this.pintarLetrasUsadas(letra);
+                            this.pintar();
+                        }
+                    }
+                    
+                    if(this.haGanado()){      // si se ha ganado la partida
+                        // ir a otra pag q sea has ganado
+                        window.location.href = "./hasGanado.html";
+                    }
+
+
+                } else {
+                    // ir a otra pagina q sea "has perdido"
+                    window.location.href = "./hasPerdido.html";
+                }
+
+
+
             });
 
             fragment.appendChild(btn);  // guardamos en fragment cada btn de letra
@@ -71,7 +93,7 @@ const teclado = {   //elemento teclado
 
         //para que solo aparezca una vez en pantalla
         document.getElementById("guiones").remove();
-       
+
         //crear elemento
         let guiones = document.createElement("p");
         guiones.setAttribute("id", "guiones");
@@ -79,8 +101,23 @@ const teclado = {   //elemento teclado
 
         //crear estructura
         document.getElementById("container-palabraMostrada").appendChild(guiones);
-    }
+    },
 
+    pintarLetrasUsadas(letra) {
+        document.getElementById("letras-usadas").textContent += (letra + "  ");
+    },
+
+    haGanado() {
+
+        let result = true;
+        for (let i = 0; i < palabraMostrada.length; i++) {
+            if (palabraMostrada.charAt(i) == '-') {
+                result = false;
+                i = palabraMostrada.length; // para salir del bucle
+            }
+        }
+        return result;
+    }
 };
 
 window.addEventListener("load", teclado.init());
