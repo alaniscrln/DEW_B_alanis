@@ -25,15 +25,15 @@
     </div>
 
     <!--------------------------------------------------------------------------------------------------------------------->
-
+    <script src="teclado/teclado2.js"></script>
     <script src="metodos.js"></script>
-    <script src="teclado/teclado.js"></script>
+    <!--<script src="teclado/teclado.js"></script>-->
     <script>
         guardarPalabra("esto es una prueba");
         pintarGuiones();     
         //mostrar palabra jugada en pantalla
         document.getElementById("guiones").textContent = palabraMostrada;
-        
+        unJugador.juego();
     </script>
 
 

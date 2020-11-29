@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        label {
+            font-size: 2rem;
+        }
+
+        form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="container text-center">
+            <form>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="jugador1">Nombre del jugador</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" name="jugador1" id="jugador1" value="alanis">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" id="btn" class="btn">¡A jugar!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--------------------------------------------------------------------------------------->
+    <script src="metodos.js"></script>
+    <script type="text/javascript">
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            if (comprobarJugador()) {
+                unJugador.guardarJugador(document.getElementById("jugador1").value);
+                window.location.href = "partida.html";
+            }
+        });
+
+        //-----------------------------------------------------
+
+        function comprobarJugador() {
+            let nombreJugador = document.getElementById("jugador1").value;
+            let re = /\w/g;
+            if (nombreJugador.match(re) == null) {
+                alert("Por favor, ¡introduzca bien el nombre del jugador!");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

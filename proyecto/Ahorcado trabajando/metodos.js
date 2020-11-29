@@ -6,7 +6,7 @@ let palabras = new Array(); // array donde se guardan las palabras existentes co
 let jugadores = new Array(); // array donde se guardan los jugadores
 
 let posLetra = new Array(); // array para ir guardando las posiciones de la letra elegida
-let errores = 0;
+//let errores = 0;
 
 class Jugador {
     constructor(nombre, puntos) {
@@ -85,30 +85,27 @@ class Productos {
 
 }
 
-
-const unJugador = {
-    jugador: null,
-    partida : {
-        rondas : null
-    },
-
-    //----------------------------
-
-    guardarJugador(nombre) {
-        this.jugador = crearJugador(nombre);
-    },
-    juego(){
-        console.log(this.partida.rondas);
-        console.log(this.jugador.getNombre());
-      for(let i = 0; i < this.partida.rondas; i++){
-          let letra = teclado.propiedades.valor;
-          console.log("aa");
-      }  
-    },
-
-    sumarPunto() {
-        this.jugador.setPuntos();
+class Partida {
+    constructor(numRondas, jugador1, jugador2){
+        this.numRondas = numRondas;
+        this.rondaActual = 1;
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.errores = 0;
     }
+
+    sumarError(){
+        this.errores++;
+    }
+
+    siguienteRonda(){
+        if( this.rondaActual + 1 <= this.numRondas){
+            this.rondaActual++;
+        }else{
+            return false; // si ya es mayor al num de rondas a jugar, delvuelve false para parar
+        }
+    }
+
 }
 
 

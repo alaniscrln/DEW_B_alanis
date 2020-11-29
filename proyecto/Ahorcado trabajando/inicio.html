@@ -55,15 +55,19 @@
 
         btnUnJugador.addEventListener("click", () => {
             if (comprobarNumRondas()) {
-                unJugador.partida.rondas = document.getElementById("rondas").value;
-                console.log(unJugador.partida.rondas);
+                //unJugador.partida.rondas = document.getElementById("rondas").value;
+                //roooondas = document.getElementById("rondas").value;
+                //console.log(unJugador.partida.rondas);
+                localStorage.setItem("rondas", document.getElementById("rondas").value);
+                
                 window.location.href='./formJugador.html';
             }
         });
 
         btnDosJugadores.addEventListener("click", () => {
             if (comprobarNumRondas()) {
-                rondas = document.getElementById("rondas").value;
+                //rondas = document.getElementById("rondas").value;
+                localStorage.setItem("rondas", document.getElementById("rondas").value);
                 window.location.href='./formJugadores.html';
             }
         });
