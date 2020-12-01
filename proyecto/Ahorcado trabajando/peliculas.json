@@ -1,0 +1,58 @@
+[
+    {
+        "titulo": "Titanic",
+        "fecha_lanzamiento": "1997",
+        "genero": "Romance/Drama",
+        "director": "James Cameron",
+        "actores": "Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates",
+        "poster": "https://pics.filmaffinity.com/titanic-321994924-mmed.jpg"
+    },
+    {
+        "titulo": "El sexto sentido",
+        "fecha_lanzamiento": "1999",
+        "genero": "Suspenso/Drama",
+        "director": "M. Night Shyamalan",
+        "actores": "Haley Joel Osment, Bruce Willis, Toni Collette, Donnie Wahlberg",
+        "poster": "https://pics.filmaffinity.com/the_sixth_sense-516003703-large.jpg"
+    },
+    {
+        "titulo": "Pulp Fiction",
+        "fecha_lanzamiento": "1994",
+        "genero": "Thriller | Crimen",
+        "director": "Quentin Tarantino",
+        "actores": "John Travolta, Samuel L. Jackson, Uma Thurman, Bruce Willis",
+        "poster": "https://pics.filmaffinity.com/pulp_fiction-210382116-large.jpg"
+    },
+    {
+        "titulo": "Todo sobre mi madre",
+        "fecha_lanzamiento": "1999",
+        "genero": "Drama | Melodrama",
+        "director": "Pedro Almodóvar",
+        "actores": "Cecilia Roth, Marisa Paredes, Penélope Cruz, Candela Peña",
+        "poster": "https://pics.filmaffinity.com/todo_sobre_mi_madre-719308624-large.jpg"
+    },
+    {
+        "titulo": "El silencio de los corderos",
+        "fecha_lanzamiento": "1991",
+        "genero": "Thriller",
+        "director": "Jonathan Demme",
+        "actores": "Jodie Foster, Anthony Hopkins, Scott Glenn, Ted Levine",
+        "poster": "https://pics.filmaffinity.com/the_silence_of_the_lambs-767447992-large.jpg"
+    },
+    {
+        "titulo": "Forrest Gump",
+        "fecha_lanzamiento": "1994",
+        "genero": "Comedia",
+        "director": "Robert Zemeckis",
+        "actores": "Tom Hanks, Robin Wright, Gary Sinise, Mykelti Williamson",
+        "poster": "https://pics.filmaffinity.com/forrest_gump-212765827-large.jpg"
+    },
+    {
+        "titulo": "Parasitos",
+        "fecha_lanzamiento": "2019",
+        "genero": "Intriga",
+        "director": "Bong Joon-ho",
+        "actores": "Song Kang-ho, Lee Seon-gyun, Jang Hye-jin, Cho Yeo-jeong",
+        "poster": "https://pics.filmaffinity.com/gisaengchung-379211692-large.jpg"
+    }
+]

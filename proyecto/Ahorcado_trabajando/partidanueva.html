@@ -27,6 +27,7 @@
         </div>
 
         <br><br><br>
+        <div id="container-tituloSecreto" class="invisible"></div>
 
         <div class="row">
             <div class="col-md-4">
@@ -69,19 +70,24 @@
     <!--------------------------------------------------------------------------------------------------------------------->
     <script src="metodos.js"></script>
     <script>
-        escogerPeliculaRandomJson();
+
 
         let rondas = localStorage.getItem("rondas");
         let jugador = new Jugador(localStorage.getItem("jugador1"), 0);
         let partida = new Partida(rondas, jugador);
 
 
+        cargarInfo();
+        console.log(palabraJugada);
+        console.log(palabraMostrada);
 
-        guardarPalabra("esto es una prueba");
-        pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
-        //mostrar palabra jugada en pantalla
-        document.getElementById("guiones").textContent = palabraMostrada;
-
+        /*
+        
+                guardarPalabra("esto es una prueba");
+                pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+                //mostrar palabra jugada en pantalla
+                document.getElementById("guiones").textContent = palabraMostrada;
+        */
 
         function crearTeclas() {
             //fragment es un doc pequeño donde se guarda mucha info, para cuando
@@ -123,7 +129,7 @@
                             msj.textContent = "¡Oh, no! Has perdido... La palabra completa es '" + palabraJugada + "'";
                         }
 
-                        siguentePartida();
+                        siguientePartida();
 
 
 
@@ -145,18 +151,7 @@
             return fragment;
         }
 
-        function init() {
-            //crear la estructura teclado
-            document.getElementById("container-teclas").appendChild(crearTeclas());
 
-            pintarHorca();
-
-            //pintar jugador
-            document.getElementById("jugador").textContent += jugador.getNombre();
-
-            document.getElementById("ronda").textContent += partida.rondaActual;
-
-        }
 
         function getCtx() {
             var lienzo = document.getElementById("canvas");
@@ -256,8 +251,10 @@
             return result;
         }
 
-        function siguentePartida() {
 
+
+
+        function siguientePartida() {
             if (document.getElementById("btnSiguientePartida") == undefined) {  //para q solo se cree el boton una vez
                 //creo el boton
                 let btnSiguientePartida = document.createElement("button");
@@ -265,7 +262,6 @@
                 btnSiguientePartida.setAttribute("id", "btnSiguientePartida");
                 btnSiguientePartida.textContent = "Siguiente Partida";
                 btnSiguientePartida.classList.add("btn");
-
                 //inserto el boton en el container
                 document.getElementById("container-mensaje").appendChild(btnSiguientePartida);
             }
@@ -273,7 +269,8 @@
             btnSiguientePartida.addEventListener("click", () => {
                 // establecer todo para la nueva partida
                 partida.siguienteRonda();
-                document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
+                cargarInfo();
+                /*document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
                 document.getElementById("letras-usadas").textContent = "";
                 partida.resetearErrores();
                 actualizarCanvas(getCtx());
@@ -284,7 +281,7 @@
                 pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
                 //mostrar palabra jugada en pantalla
                 document.getElementById("guiones").textContent = palabraMostrada;
-
+*/
                 //borrar div y btn
                 document.getElementById("mensaje").remove();
                 document.getElementById("btnSiguientePartida").remove();
@@ -298,28 +295,80 @@
             pintarHorca();
         }
 
-
-
-        function escogerPeliculaRandomJson(){
+        function escogerPeliculaRandomJson() {
             const xhttp = new XMLHttpRequest();
 
-            xhttp.open("GET", "peliculas.json", true);
-            xhttp.send();
-            xhttp.onreadystatechange = function(){
-                if(this.readyState === 4 && this.status == 200){
-                    //console.log(this.responseText);
+            xhttp.open("POST", "peliculas.json", true);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status == 200) {
                     let peliculas = JSON.parse(this.responseText); // peliculas tiene un array con las peliculas
+                    let peliculaRandom = peliculas[(Math.random() * peliculas.length) | 0];   //index aleatorio
+                    let pelicula = peliculaRandom.titulo.toLowerCase();
 
-                    let peliculaRandom = peliculas[ (Math.random() * peliculas.length) | 0 ];   //index aleatorio
+                    let strPelicula = JSON.stringify(pelicula); //al hacerlo asi me lo guarda con comillas
+                    strPelicula = JSON.parse(strPelicula);  // para quitarle las comillas
 
-                    palabraJugada = peliculaRandom.titulo;
+                    //no se me ocurre otra forma de poder obtener el titulo de la pelicula fuera de esta function
+                    //ya q por lo q he visto, no es posible guardar datos en variables externas al estarse 
+                    //ejecutando en otro hilo
+
+
+                    let tituloSecreto = document.getElementById("container-tituloSecreto");
+                    tituloSecreto.textContent = strPelicula;
+
                 }
             };
+            xhttp.send();
+        }
+        function recogerTitulo(){
+            
+            let texto = document.getElementById("container-tituloSecreto").textContent;
+
+            console.log(texto + " dentro del metodo rndjson");
+            return texto;
         }
 
 
+        //establecer valores iniciales y cargar palabra aleatoria
+        function cargarInfo() {
+            document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
+            document.getElementById("letras-usadas").textContent = "";
+            partida.resetearErrores();
+            actualizarCanvas(getCtx());
+            escogerPeliculaRandomJson(); // en este metodo ya se guarda la palabraJugada
+            let pelicula = recogerTitulo();
+            guardarPalabra(pelicula);
+            console.log(palabraJugada + " por favor");
+            pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+            //mostrar palabra jugada en pantalla
+            document.getElementById("guiones").textContent = palabraMostrada;
+
+        }
+
+        function init() {
+            //crear la estructura teclado
+            document.getElementById("container-teclas").appendChild(crearTeclas());
+
+            /*
+                        escogerPeliculaRandomJson();
+                        console.log(palabraJugada + "metodo init");
+                        pintarGuiones();
+                        console.log(palabraMostrada + " metodo init");
+                        document.getElementById("guiones").textContent = palabraMostrada;
+                        pintarHorca();
+            
+            */
 
 
+            // cargarInfo();
+
+            //pintar jugador
+            document.getElementById("jugador").textContent += jugador.getNombre();
+
+            //            document.getElementById("ronda").textContent += partida.rondaActual;
+
+        }
 
         window.addEventListener("load", init());
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="teclado/teclado.css">
+    <link rel="stylesheet" href="partidacss.css">
+</head>
+
+<body>
+
+    <div id="container-palabraMostrada">
+        <p id="guiones"></p>
+    </div>
+
+    <canvas width="320" height="250" id="canvas" style="border: 1px solid black;"></canvas>
+    <script>
+        var ctx = document.getElementById("canvas").getContext("2d");
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(64, 9, 20, 237);
+        ctx.fillRect(64, 9, 115, 20);
+        ctx.fillRect(155, 9, 4, 40);
+        ctx.beginPath();
+        ctx.moveTo(70, 65);
+        ctx.lineTo(70, 80);
+        ctx.lineTo(133, 11);
+        ctx.lineTo(118, 11);
+        ctx.closePath();
+        ctx.fill();
+
+    </script>
+
+    <div id="container-letrasUsadas">
+        <p id="letras-usadas">Letras usadas: </p>
+    </div>
+    <div id="container-hasPerdido">
+        <p id="has-perdido"></p>
+        <p id="solucion"></p>
+    </div>
+
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <script src="teclado/teclado2.js"></script>
+    <script src="metodos.js"></script>
+    <!--<script src="teclado/teclado.js"></script>-->
+    <script>
+
+        /////////////////////////////////////////////////UN JUGADOR/////////////////////////////////////////////////
+
+        if (localStorage.getItem("jugador2") == undefined) {  // no hay segundo jugador
+            // establezco las variables necesarias con los datos obtenidos
+            let rondas = localStorage.getItem("rondas");
+            let jugador = new Jugador(localStorage.getItem("jugador1"), 0);
+
+            guardarPalabra("esto es una prueba");
+            pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+            //mostrar palabra jugada en pantalla
+            document.getElementById("guiones").textContent = palabraMostrada;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
