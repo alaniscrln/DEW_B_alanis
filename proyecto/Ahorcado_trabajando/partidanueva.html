@@ -295,10 +295,13 @@
             pintarHorca();
         }
 
+
+
+
         function escogerPeliculaRandomJson() {
             const xhttp = new XMLHttpRequest();
-
-            xhttp.open("POST", "peliculas.json", true);
+            let strPelicula; 
+            xhttp.open("GET", "peliculas.json", true);
 
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status == 200) {
@@ -306,21 +309,25 @@
                     let peliculaRandom = peliculas[(Math.random() * peliculas.length) | 0];   //index aleatorio
                     let pelicula = peliculaRandom.titulo.toLowerCase();
 
-                    let strPelicula = JSON.stringify(pelicula); //al hacerlo asi me lo guarda con comillas
+                    strPelicula = JSON.stringify(pelicula); //al hacerlo asi me lo guarda con comillas
                     strPelicula = JSON.parse(strPelicula);  // para quitarle las comillas
 
-                    //no se me ocurre otra forma de poder obtener el titulo de la pelicula fuera de esta function
-                    //ya q por lo q he visto, no es posible guardar datos en variables externas al estarse 
-                    //ejecutando en otro hilo
+                    console.log(strPelicula + " dentro de la func");
 
+                    guardarPalabra(strPelicula);
 
                     let tituloSecreto = document.getElementById("container-tituloSecreto");
                     tituloSecreto.textContent = strPelicula;
 
                 }
             };
+            console.log(strPelicula + " fuera de la func");
+
             xhttp.send();
         }
+
+/*
+
         function recogerTitulo(){
             
             let texto = document.getElementById("container-tituloSecreto").textContent;
@@ -329,7 +336,7 @@
             return texto;
         }
 
-
+*/
         //establecer valores iniciales y cargar palabra aleatoria
         function cargarInfo() {
             document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
@@ -337,9 +344,10 @@
             partida.resetearErrores();
             actualizarCanvas(getCtx());
             escogerPeliculaRandomJson(); // en este metodo ya se guarda la palabraJugada
-            let pelicula = recogerTitulo();
-            guardarPalabra(pelicula);
-            console.log(palabraJugada + " por favor");
+            //let pelicula = recogerTitulo();
+            //guardarPalabra(pelicula);
+            //console.log(palabraJugada + " por favor");
+            escogerPeliculaRandomJson();
             pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
             //mostrar palabra jugada en pantalla
             document.getElementById("guiones").textContent = palabraMostrada;
@@ -361,7 +369,7 @@
             */
 
 
-            // cargarInfo();
+            cargarInfo();
 
             //pintar jugador
             document.getElementById("jugador").textContent += jugador.getNombre();
