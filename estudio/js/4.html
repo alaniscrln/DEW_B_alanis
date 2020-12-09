@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" value="0" style="width: 100px;" id="pantalla">
+    <br>
+    <button class="numero" id="7">7</button> <button class="numero" id="8">8</button> <button class="numero"
+        id="9">9</button> <button class="operacion" id="sum">+</button><br>
+    <button class="numero" id="4">4</button> <button class="numero" id="5">5</button> <button class="numero"
+        id="6">6</button> <button class="operacion" id="rest">-</button><br>
+    <button class="numero" id="1">1</button> <button class="numero" id="2">2</button> <button class="numero"
+        id="3">3</button> <button class="operacion" id="mult">*</button><br>
+    <button id="limpiar">C</button> <button class="numero" id="0">0</button> <button id="igual">=</button>
+    <button class="operacion" id="div">/</button>
+
+    <script>
+        calculadora = {
+            elementos: {
+                numero1: "",
+                numero2: "",
+                operacion: "",
+                resultado: "",
+                mostrado: ""
+            },
+            //---------------------------
+            init() {
+                this.eventoTeclas();
+            },
+
+            eventoTeclas() {
+                let btnsNumeros = [];
+                btnsNumeros = document.querySelectorAll(".numero");
+                btnsNumeros.forEach(btnNumero => {
+                    btnNumero.addEventListener("click", () => {
+                        if (this.elementos.operacion == "") {
+                            this.elementos.numero1 += btnNumero.textContent;
+                            this.elementos.mostrado = this.elementos.numero1;
+                            console.log(this.elementos.numero1);
+                            document.getElementById("pantalla").value = this.elementos.mostrado;
+                        } else {
+                            this.elementos.numero2 += btnNumero.textContent;
+                            this.elementos.mostrado = this.elementos.numero2;
+                            console.log("num2 " + this.elementos.numero2);
+                            document.getElementById("pantalla").value = this.elementos.mostrado;
+                        }
+                    });
+                });
+
+                let btnsOperacion = [];
+                btnsOperacion = document.querySelectorAll(".operacion");
+                btnsOperacion.forEach(btnOp => {
+                    btnOp.addEventListener("click", () => {
+                        this.elementos.operacion = btnOp.textContent;
+                        console.log("operacion: " + this.elementos.operacion);
+                    });
+                });
+
+
+                document.getElementById("limpiar").addEventListener("click", () => {
+                    this.elementos.numero1 = "";
+                    this.elementos.numero2 = "";
+                    this.elementos.operacion = "";
+                    this.elementos.resultado = "";
+                    this.elementos.mostrado = "0";
+                    document.getElementById("pantalla").value = this.elementos.mostrado;
+                });
+
+                document.getElementById("igual").addEventListener("click", () => {
+                    if (this.elementos.numero1 != "" && this.elementos.numero2 != "" && this.elementos.operacion != "") {
+                        let num1 = parseInt(this.elementos.numero1);
+                        let num2 = parseInt(this.elementos.numero2);
+
+                        switch (this.elementos.operacion) {
+                            case "+":
+                                this.elementos.resultado = num1 + num2;
+                                this.elementos.mostrado = this.elementos.resultado;
+                                document.getElementById("pantalla").value = this.elementos.mostrado;
+                                break;
+                            case "-":
+                                this.elementos.resultado = num1 - num2;
+                                this.elementos.mostrado = this.elementos.resultado;
+                                document.getElementById("pantalla").value = this.elementos.mostrado;
+                                break;
+                            case "*":
+                                this.elementos.resultado = num1 * num2;
+                                this.elementos.mostrado = this.elementos.resultado;
+                                document.getElementById("pantalla").value = this.elementos.mostrado;
+                                break;
+                            case "/":
+                                if (num2 == 0) {
+                                    this.elementos.resultado = Infinity;
+                                } else {
+                                    this.elementos.resultado = num1 / num2;
+                                }
+                                this.elementos.mostrado = this.elementos.resultado;
+                                document.getElementById("pantalla").value = this.elementos.mostrado;
+                                break;
+                        }
+                    }
+                });
+
+            }
+        };
+
+        window.addEventListener("onload", calculadora.init());
+
+    </script>
+
+</body>
+
+</html>

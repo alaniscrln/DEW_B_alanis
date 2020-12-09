@@ -1,0 +1,20 @@
+EJERCICIO 3
+
+a) Los datos obtenidos de un formulario se deben validar del lado del servidor. Desde el lado
+   del cliente es posible obligar a escribir un dato que sea necesario, pero no se validan.
+
+b) Para obtener todos los divs de una página se utiliza la siguiente línea de código: 
+
+   document.getElementsByTagName("div");
+
+   Esto retorna un array con todos los elementos div.
+
+c) Para eliminar una cookie solo es necesario establecer su fecha de expiración a una anterior al
+   día actual. Por lo general, se utiliza la fecha del 1 de enero de 1970: 
+
+   document.cookie = "clave=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+d) La expresión window.onload = function(){} nos permite ejecutar el código escrito dentro de la 
+   function nada más se abra la pestaña.
+
+e) 

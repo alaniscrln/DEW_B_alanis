@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Calcula	los	divisores	de	un	número.	Si	el	dato	que	se	indica	no	es	un	número	se	
+mostrará	un	error. Utiliza	un	<div>	en	la	página	para	incluir	la	información,	al	
+principio	no	tiene	código.	Lo	que	haremos	será	insertarle	código	con	la	
+propiedad	innerHTML-->
+    <h1>DIVISORES</h1>
+    <br>
+    <h3>Indica un numero: </h3> 
+    <input type="text" name="numero" id="numero"><button id="btn">Calcular</button>
+    <br><br>
+    <div class="container" id="container">
+    </div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", ()=>{
+            let container = document.getElementById("container");
+            container.innerHTML="";
+
+            let numero = document.getElementById("numero").value;
+            console.log(numero);
+            if(!isNaN(numero)){
+                let divisores = document.createDocumentFragment();
+                while(numero >=1){
+                    let p = document.createElement("p");
+                    p.textContent = numero + " es un divisor";
+                    divisores.appendChild(p);
+                    numero /= 2;
+                }
+                container.appendChild(divisores);
+            }else{
+                let aviso = document.createElement("p");
+                aviso.textContent = "Por favor, introduce un número...";
+                container.appendChild(aviso);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

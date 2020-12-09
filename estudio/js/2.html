@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+
+<body>
+    <!--Calcula	sucesión de Fibonacci-->
+    <h1>Sucesión de Fibonacci</h1>
+    <h3>Indica un numero: </h3>
+    <input type="text" name="numero" id="numero"><button id="btn">Calcular</button>
+    <br><br>
+    <div id="container"></div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            let container = document.getElementById("container");
+            container.innerHTML = "";
+            let numero = document.getElementById("numero").value;
+            if (isNaN(numero)) {
+                alert("Por favor.. introduce un numero");
+            } else {
+                let a = 0;
+                let b = 1;
+                let suma = 0;
+                let parar = false;
+                do {
+
+                    container.innerHTML += "<br>" + a + ", " + b;
+                    suma = a + b;
+                    if(suma < numero-1){
+                        container.innerHTML += "<br>" + suma;
+                        a = b;
+                        b = suma;
+                    }else{
+                        parar = true;
+                    }
+
+                } while (!parar);
+
+            }
+
+        });
+    </script>
+</body>
+
+</html>
