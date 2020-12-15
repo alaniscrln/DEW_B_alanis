@@ -1,11 +1,13 @@
 class Pokemon extends Creature{
-    constructor(type, name, race, level){
+    constructor(type, name, race){
         super(type, race);
         this.name = name;
-        this.level = level;
+        this.level = this.randomLevel();
     }
 
-    mostrarPokemon(){
-        return '{"type":"' + this.type + '", "name":"' + this.name +  '", "race":"' + this.race +  '", "level":"' + this.level + '"}';
-    }
+    randomLevel() {
+        let rand = Math.random() * 11;
+        return Math.floor(rand);
+   }
+
 }

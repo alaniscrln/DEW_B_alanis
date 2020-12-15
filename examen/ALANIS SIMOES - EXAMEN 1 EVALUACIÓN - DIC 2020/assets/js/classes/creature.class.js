@@ -4,7 +4,4 @@ class Creature{
         this.race = race;
     }
 
-    mostrarCreature(){
-        return '{"type":"' + this.type + '", "race":"' + this.race + '"}';
-    }
 }
