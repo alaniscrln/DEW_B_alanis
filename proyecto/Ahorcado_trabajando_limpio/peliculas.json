@@ -1,0 +1,58 @@
+[
+    {
+        "titulo": "Titanic",
+        "fecha_lanzamiento": "1997",
+        "genero": "Romance/Drama",
+        "director": "James Cameron",
+        "actores": "Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates",
+        "poster": "https://resizing.flixster.com/BxZIv5JMCG2E7_t9ZX3yeqL6WLY=/206x305/v2/https://flxt.tmsimg.com/NowShowing/10236/10236_aa.jpg"
+    },
+    {
+        "titulo": "El sexto sentido",
+        "fecha_lanzamiento": "1999",
+        "genero": "Suspenso/Drama",
+        "director": "M. Night Shyamalan",
+        "actores": "Haley Joel Osment, Bruce Willis, Toni Collette, Donnie Wahlberg",
+        "poster": "https://resizing.flixster.com/qLsq73N1h3m4x9qO62Ik9zoYPd0=/206x305/v2/https://flxt.tmsimg.com/assets/p23611_p_v10_ag.jpg"
+    },
+    {
+        "titulo": "Pulp Fiction",
+        "fecha_lanzamiento": "1994",
+        "genero": "Thriller | Crimen",
+        "director": "Quentin Tarantino",
+        "actores": "John Travolta, Samuel L. Jackson, Uma Thurman, Bruce Willis",
+        "poster": "https://resizing.flixster.com/Quwx8wGIpkG6qRBAVVjF1M6z_EI=/206x305/v2/https://flxt.tmsimg.com/NowShowing/41244/41244_aa.jpg"
+    },
+    {
+        "titulo": "Todo sobre mi madre",
+        "fecha_lanzamiento": "1999",
+        "genero": "Drama | Melodrama",
+        "director": "Pedro Almodóvar",
+        "actores": "Cecilia Roth, Marisa Paredes, Penélope Cruz, Candela Peña",
+        "poster": "https://resizing.flixster.com/m7khyci9A7Jsml0JK15JIq37PpM=/206x305/v2/https://flxt.tmsimg.com/assets/p22998_p_v13_aa.jpg"
+    },
+    {
+        "titulo": "El silencio de los corderos",
+        "fecha_lanzamiento": "1991",
+        "genero": "Thriller",
+        "director": "Jonathan Demme",
+        "actores": "Jodie Foster, Anthony Hopkins, Scott Glenn, Ted Levine",
+        "poster": "https://resizing.flixster.com/EypAJzN21QGgpl_HwES6wVj4tBI=/206x305/v2/https://flxt.tmsimg.com/assets/p13013_p_v10_aa.jpg"
+    },
+    {
+        "titulo": "Forrest Gump",
+        "fecha_lanzamiento": "1994",
+        "genero": "Comedia",
+        "director": "Robert Zemeckis",
+        "actores": "Tom Hanks, Robin Wright, Gary Sinise, Mykelti Williamson",
+        "poster": "https://resizing.flixster.com/L5qChV9HMaip1sk9eK3AFAWnlLk=/206x305/v2/https://flxt.tmsimg.com/NowShowing/3509/3509_aa.jpg"
+    },
+    {
+        "titulo": "Parasitos",
+        "fecha_lanzamiento": "2019",
+        "genero": "Intriga",
+        "director": "Bong Joon-ho",
+        "actores": "Song Kang-ho, Lee Seon-gyun, Jang Hye-jin, Cho Yeo-jeong",
+        "poster": "https://resizing.flixster.com/enYPx96luLq0FWTdEpiWqX6rxMk=/206x305/v2/https://resizing.flixster.com/OCnoNZ2b2Z_Bpa0RX35IwYN1lLQ=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzZlZWEwMmY4LTk1OWUtNGEyOS04ODRmLTA0OWRjMzhlYWZkNi53ZWJw"
+    }
+]

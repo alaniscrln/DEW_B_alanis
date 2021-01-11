@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="teclado/teclado.css">
+    <link rel="stylesheet" href="partidacss.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="jugador">Jugando: </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="ronda">Ronda: </div>
+            </div>
+        </div>
+
+        <br><br><br>
+        <div id="container-tituloSecreto" class="invisible"></div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <canvas width="320" height="255" id="canvas"></canvas>
+            </div>
+
+            <div class="col-md-4" id="container-mensaje">
+                <p id="mensaje"></p>
+            </div>
+
+            <div class="col-md-4">
+                <div id="container-letrasUsadas">
+                    <br><br><br><br>
+                    <p class="letras-usadas">Letras usadas:</p>
+                    <p id="letras-usadas" class="letras-usadas"></p>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="container-palabraMostrada">
+                    <p id="guiones"></p>
+                </div>
+            </div>
+
+        </div>
+
+        <br><br>
+        <div id="teclado">
+            <div class="container-teclas" id="container-teclas">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <script src="metodos.js"></script>
+    <script>
+
+
+        let rondas = localStorage.getItem("rondas");
+        let jugador = new Jugador(localStorage.getItem("jugador1"), 0);
+        let partida = new Partida(rondas, jugador);
+
+
+        cargarInfo();
+        console.log(palabraJugada);
+        console.log(palabraMostrada);
+
+        /*
+        
+                guardarPalabra("esto es una prueba");
+                pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+                //mostrar palabra jugada en pantalla
+                document.getElementById("guiones").textContent = palabraMostrada;
+        */
+
+        function crearTeclas() {
+            //fragment es un doc pequeño donde se guarda mucha info, para cuando
+            //ya este todo guardado en ella, empujarlo de una al html.
+            const fragment = document.createDocumentFragment();
+            const letras = [
+                "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
+                "a", "s", "d", "f", "g", "h", "j", "k", "l", "ñ",
+                "z", "x", "c", "v", "b", "n", "m"
+            ];
+
+            letras.forEach(letra => {
+                btn = document.createElement("button");
+
+                btn.setAttribute("type", "button");
+                btn.classList.add("tecla");
+
+                btn.textContent = letra;
+                btn.addEventListener("click", (btn) => {
+                    console.log(letra);
+
+                    if (partida.errores < 6 && !haGanado()) {
+                        posicionLetra(letra);   // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
+                        if (posLetra.length == 0) { // si está vacio, significa q la letra era erronea
+                            partida.sumarError();
+                            pintarLetrasUsadas(letra);
+                            pintarAhorcado(partida.errores);
+                        } else {
+                            pintarLetraString(letra);   // modifico string de palabraMostrada
+                            pintarLetrasUsadas(letra);
+                            pintar();
+                        }
+                    } else {    // si ya se gastaron todos los intentos o si ha ganado
+                        let msj = document.getElementById("mensaje");
+                        if (haGanado()) {
+                            msj.textContent = "¡Qué bien! Has ganado esta ronda";
+                            jugador.sumarPunto();
+                        } else {
+                            msj.textContent = "¡Oh, no! Has perdido... La palabra completa es '" + palabraJugada + "'";
+                        }
+
+                        siguientePartida();
+
+
+
+
+                    }
+
+
+
+                });
+
+                fragment.appendChild(btn);  // guardamos en fragment cada btn de letra
+
+                if (letra == "p" || letra == "ñ") {   // mostrar teclado en filas
+                    fragment.appendChild(document.createElement("br"));
+                }
+
+            });
+
+            return fragment;
+        }
+
+
+
+        function getCtx() {
+            var lienzo = document.getElementById("canvas");
+            return lienzo.getContext('2d');
+        }
+
+        function pintarLetrasUsadas(letra) {
+            document.getElementById("letras-usadas").textContent += (letra + "  ");
+        }
+
+        function pintar() {
+            //para que solo aparezca una vez en pantalla
+            document.getElementById("guiones").remove();
+
+            //crear elemento
+            let guiones = document.createElement("p");
+            guiones.setAttribute("id", "guiones");
+            guiones.textContent = palabraMostrada;
+
+            //crear estructura
+            document.getElementById("container-palabraMostrada").appendChild(guiones);
+        }
+
+        function pintarHorca() {
+            let ctx = getCtx();
+            ctx.fillStyle = '#663333';
+            ctx.fillRect(30, 240, 200, 9);
+            ctx.fillRect(64, 9, 20, 237);
+            ctx.fillRect(64, 9, 115, 20);
+            ctx.fillRect(155, 9, 4, 40);
+            ctx.beginPath();
+            ctx.moveTo(70, 65);
+            ctx.lineTo(70, 80);
+            ctx.lineTo(133, 11);
+            ctx.lineTo(118, 11);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function pintarAhorcado(numError) {
+            let ctx = getCtx();
+            switch (numError) {
+                case 1: //pintar cabeza
+                    ctx.beginPath();
+                    ctx.arc(157, 75, 25, 0, 2 * Math.PI);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    break;
+                case 2: //pintar cuerpo
+                    ctx.beginPath();
+                    ctx.fillStyle = 'black';
+                    ctx.rect(154, 100, 3, 75);
+                    ctx.fill();
+                    break;
+                case 3: //pintar brazo izq
+                    ctx.beginPath();
+                    ctx.moveTo(154, 110);
+                    ctx.lineTo(125, 135);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    break;
+                case 4: //pinta brazo der
+                    ctx.beginPath();
+                    ctx.moveTo(156, 110);
+                    ctx.lineTo(183, 135);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    break;
+                case 5: //pintar pierna izq
+                    ctx.beginPath();
+                    ctx.moveTo(154, 173);
+                    ctx.lineTo(125, 200);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    break;
+                case 6: //pintar pierna der
+                    ctx.beginPath();
+                    ctx.moveTo(156, 173);
+                    ctx.lineTo(183, 200);
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    break;
+
+            }
+
+        }
+
+        //comprobar que la palabraMostrada no tenga ningun guion
+        function haGanado() {
+            let result = true;
+            for (let i = 0; i < palabraMostrada.length; i++) {
+                if (palabraMostrada.charAt(i) == '-') {
+                    result = false;
+                    i = palabraMostrada.length; // para salir del bucle
+                }
+            }
+            return result;
+        }
+
+
+
+
+        function siguientePartida() {
+            if (document.getElementById("btnSiguientePartida") == undefined) {  //para q solo se cree el boton una vez
+                //creo el boton
+                let btnSiguientePartida = document.createElement("button");
+                btnSiguientePartida.setAttribute("type", "button");
+                btnSiguientePartida.setAttribute("id", "btnSiguientePartida");
+                btnSiguientePartida.textContent = "Siguiente Partida";
+                btnSiguientePartida.classList.add("btn");
+                //inserto el boton en el container
+                document.getElementById("container-mensaje").appendChild(btnSiguientePartida);
+            }
+
+            btnSiguientePartida.addEventListener("click", () => {
+                // establecer todo para la nueva partida
+                partida.siguienteRonda();
+                cargarInfo();
+                /*document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
+                document.getElementById("letras-usadas").textContent = "";
+                partida.resetearErrores();
+                actualizarCanvas(getCtx());
+
+
+                //escoger palabra
+                guardarPalabra("vas genial ewe");
+                pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+                //mostrar palabra jugada en pantalla
+                document.getElementById("guiones").textContent = palabraMostrada;
+*/
+                //borrar div y btn
+                document.getElementById("mensaje").remove();
+                document.getElementById("btnSiguientePartida").remove();
+            });
+        }
+
+        function actualizarCanvas(ctx) {
+            var lienzo = document.getElementById("canvas");
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, lienzo.width, lienzo.height); //Esto es para limpiar el canvas
+            pintarHorca();
+        }
+
+
+
+
+        function escogerPeliculaRandomJson() {
+            const xhttp = new XMLHttpRequest();
+            let strPelicula; 
+            xhttp.open("GET", "peliculas.json", true);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status == 200) {
+                    let peliculas = JSON.parse(this.responseText); // peliculas tiene un array con las peliculas
+                    let peliculaRandom = peliculas[(Math.random() * peliculas.length) | 0];   //index aleatorio
+                    let pelicula = peliculaRandom.titulo.toLowerCase();
+
+                    strPelicula = JSON.stringify(pelicula); //al hacerlo asi me lo guarda con comillas
+                    strPelicula = JSON.parse(strPelicula);  // para quitarle las comillas
+
+                    console.log(strPelicula + " dentro de la func");
+
+                    guardarPalabra(strPelicula);
+
+                    let tituloSecreto = document.getElementById("container-tituloSecreto");
+                    tituloSecreto.textContent = strPelicula;
+
+                }
+            };
+            console.log(strPelicula + " fuera de la func");
+
+            xhttp.send();
+        }
+
+/*
+
+        function recogerTitulo(){
+            
+            let texto = document.getElementById("container-tituloSecreto").textContent;
+
+            console.log(texto + " dentro del metodo rndjson");
+            return texto;
+        }
+
+*/
+        //establecer valores iniciales y cargar palabra aleatoria
+        function cargarInfo() {
+            document.getElementById("ronda").textContent = "Ronda: " + partida.rondaActual;
+            document.getElementById("letras-usadas").textContent = "";
+            partida.resetearErrores();
+            actualizarCanvas(getCtx());
+            escogerPeliculaRandomJson(); // en este metodo ya se guarda la palabraJugada
+            //let pelicula = recogerTitulo();
+            //guardarPalabra(pelicula);
+            //console.log(palabraJugada + " por favor");
+            escogerPeliculaRandomJson();
+            pintarGuiones(); // guardo la palabra en formato guiones en variable ' palabraMostrada'
+            //mostrar palabra jugada en pantalla
+            document.getElementById("guiones").textContent = palabraMostrada;
+
+        }
+
+        function init() {
+            //crear la estructura teclado
+            document.getElementById("container-teclas").appendChild(crearTeclas());
+
+            /*
+                        escogerPeliculaRandomJson();
+                        console.log(palabraJugada + "metodo init");
+                        pintarGuiones();
+                        console.log(palabraMostrada + " metodo init");
+                        document.getElementById("guiones").textContent = palabraMostrada;
+                        pintarHorca();
+            
+            */
+
+
+            cargarInfo();
+
+            //pintar jugador
+            document.getElementById("jugador").textContent += jugador.getNombre();
+
+            //            document.getElementById("ronda").textContent += partida.rondaActual;
+
+        }
+
+        window.addEventListener("load", init());
+
+    </script>
+
+
+</body>
+
+</html>

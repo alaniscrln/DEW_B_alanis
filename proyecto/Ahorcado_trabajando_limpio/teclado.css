@@ -1,0 +1,25 @@
+#teclado{
+    /*position: fixed;    /* se queda fijo aunq deslicemos la pantalla*/
+    left: 0;    /*posicionarlo abajo del todo*/
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    /*background: #470b69;*/
+}
+
+.container-teclas{
+    text-align: center;
+}
+
+.tecla{
+    height: 50px;
+    width: 6%;  /*para q sea responsive*/
+    max-width: 90px;
+    margin: 6px;
+    border-radius: 6px;
+    background: rgb(221, 181, 226);
+    color: black;
+    font-size: 17px;
+    justify-content: center;
+    outline: none;
+}

@@ -1,0 +1,40 @@
+#jugador, #puntosJugador{
+    text-align: left;
+    font-weight: bold;
+}
+
+#ronda{
+    text-align: right;
+    font-weight: bold;
+}
+
+/********************************************************************************************/
+
+#guiones{
+    text-align: center;
+}
+
+/*.letras-usadas{
+    text-align: right;
+}*/
+
+#mensaje{
+    text-align: right;
+}
+
+#btnSiguientePartida{
+    float: right;
+}
+
+#container-boton{
+    display: flex;
+    justify-content: center;
+}
+
+.card-header{
+    background-color: rgb(221, 181, 226) !important;
+}
+
+.btn {
+    background-color: rgb(221, 181, 226) !important;
+}
