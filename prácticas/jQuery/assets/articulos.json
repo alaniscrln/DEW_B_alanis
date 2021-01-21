@@ -1,0 +1,18 @@
+[
+    {
+        "nombre" : "PlayStation 5",
+        "precio" : "500.00"
+    },
+    {
+        "nombre" : "TV Xiaomi 43\"",
+        "precio" : "325.00"
+    },
+    {
+        "nombre" : "Nevera Samsung",
+        "precio" : "1100.00"
+    },
+    {
+        "nombre" : "Lavadora Balay",
+        "precio" : "1000.00"
+    }
+]

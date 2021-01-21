@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Compra Online</title>
+    <style>
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(https://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="loader"></div>
+
+    <div>
+        <h2>Artículos</h2>
+        <div id="articulos"></div>
+        <div>
+            <button id="agregar">Agregar al Carrito</button>
+        </div>
+    </div>
+    <div>
+        <h2>Cesta de la compra</h2>
+        <div>
+            <div id="cesta"></div>
+            <div>
+                <p><strong>IGIC (7%): </strong><span id="igic"></span> €</p>
+                <p><strong>Importe Total: </strong><span id="total"></span> €</p>
+            </div>
+            <div>
+                <br>
+                <button id="cargar-datos">Cargar Datos</button>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+        <script src="assets/main.js"></script>
+</body>
+
+</html>
