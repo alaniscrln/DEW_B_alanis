@@ -9,6 +9,7 @@ function crearTeclas() {
     //ya este todo guardado en ella, empujarlo de una al html.
     const fragment = document.createDocumentFragment();
     const letras = [
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
         "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
         "a", "s", "d", "f", "g", "h", "j", "k", "l", "ñ",
         "z", "x", "c", "v", "b", "n", "m"
@@ -24,35 +25,40 @@ function crearTeclas() {
         btn.addEventListener("click", (btn) => {
             let mensaje = document.getElementById("container-mensaje");
 
-            //todavia tiene intentos y no ha adivinado la palabra
-            if (partida.errores < 6 && !haGanado()) {
-                posicionLetra(letra);   // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
-                if (posLetra.length == 0) { // si está vacio, significa q la letra era erronea
-                    partida.sumarError();
-                    pintarLetrasUsadas(letra);
-                    pintarAhorcado(partida.errores);
-                } else {
-                    pintarLetraString(letra);   // modifico string de palabraMostrada
-                    pintarLetrasUsadas(letra);
-                    pintarPalabraMostrada();
+            //primero hay que comprobar que la letra no haya sido usada antes, para que si es errónea, no sume otro error.
+            if (!esRepetida(letra)) { // si la letra no ha aparecido antes, se juega con ella
+                //todavia tiene intentos y no ha adivinado la palabra
+                if (partida.errores < 6 && !haGanado()) {
+                    posicionLetra(letra);   // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
+                    if (posLetra.length == 0) { // si está vacio, significa q la letra era erronea
+                        partida.sumarError();
+                        pintarLetrasUsadas(letra);
+                        pintarAhorcado(partida.errores);
+                    } else {
+                        pintarLetraString(letra);   // modifico string de palabraMostrada
+                        pintarLetrasUsadas(letra);
+                        pintarPalabraMostrada();
+                    }
                 }
-            }
 
-            //ya ha adivinado la palabra
-            if (partida.errores < 6 && haGanado()) {
-                mensaje.style.visibility = "visible";
-                mensaje.textContent = "¡Qué bien! Has ganado esta ronda";
-                jugador.sumarPunto();
-                document.getElementById("container-pelicula").style.visibility = "visible";
-                siguientePartida();
-            }
+                //ya ha adivinado la palabra
+                if (partida.errores < 6 && haGanado()) {
+                    mensaje.style.visibility = "visible";
+                    mensaje.textContent = "¡Qué bien! Has ganado esta ronda";
+                    jugador.sumarPunto();
+                    document.getElementById("container-pelicula").style.visibility = "visible";
+                    siguientePartida();
+                }
 
-            //no ha adivinado la palabra y no le quedan intentos
-            if (partida.errores >= 6) {
-                mensaje.style.visibility = "visible";
-                mensaje.textContent = "¡Oh, no! Has perdido... La solución es... ";
-                document.getElementById("container-pelicula").style.visibility = "visible";
-                siguientePartida();
+                //no ha adivinado la palabra y no le quedan intentos
+                if (partida.errores >= 6) {
+                    mensaje.style.visibility = "visible";
+                    mensaje.textContent = "¡Oh, no! Has perdido... La solución es... ";
+                    document.getElementById("container-pelicula").style.visibility = "visible";
+                    siguientePartida();
+                }
+            }else{  //la letra ya se ha usado
+                alert("¡Ya has usado esa letra! Escoge otra");
             }
 
         });
@@ -68,20 +74,30 @@ function crearTeclas() {
     return fragment;
 }
 
+function esRepetida(letra) {
+    let letrasUsadas = document.getElementById("letras-usadas").textContent;
+    let patt = new RegExp(letra);
+
+    if (patt.test(letrasUsadas)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function getCtx() {
     var lienzo = document.getElementById("canvas");
     return lienzo.getContext('2d');
 }
 
 function pintarLetrasUsadas(letra) {
-    let letrasUsadas = document.getElementById("letras-usadas").textContent;
-    let patt = new RegExp(letra);
 
-    if (patt.test(letrasUsadas)) {
+    if (esRepetida(letra)) {
         alert("¡Ya has usado esa letra! Escoge otra");
     } else {
         document.getElementById("letras-usadas").textContent += (letra + "  ");
     }
+
 }
 
 function pintarPalabraMostrada() {

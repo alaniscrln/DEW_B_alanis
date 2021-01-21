@@ -154,6 +154,11 @@ function posicionLetra(letra) {
 
 // pintar los guiones en palabraMostrada
 function pintarGuiones() {
+
+    // tener en cuenta las tildes. todo lo q no sea una letra se pintara tal cual
+    // \W -> todo lo q no sea alfanumerico
+
+
     palabraMostrada = "";
     for (let i = 0; i < palabraJugada.length; i++) {
         if (palabraJugada.charAt(i) != ' ') {
