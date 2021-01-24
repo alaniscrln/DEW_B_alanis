@@ -48,11 +48,35 @@
         "poster": "https://resizing.flixster.com/L5qChV9HMaip1sk9eK3AFAWnlLk=/206x305/v2/https://flxt.tmsimg.com/NowShowing/3509/3509_aa.jpg"
     },
     {
-        "titulo": "Parasitos",
+        "titulo": "Parásitos",
         "fecha_lanzamiento": "2019",
         "genero": "Intriga",
         "director": "Bong Joon-ho",
         "actores": "Song Kang-ho, Lee Seon-gyun, Jang Hye-jin, Cho Yeo-jeong",
         "poster": "https://resizing.flixster.com/enYPx96luLq0FWTdEpiWqX6rxMk=/206x305/v2/https://resizing.flixster.com/OCnoNZ2b2Z_Bpa0RX35IwYN1lLQ=/ems.ZW1zLXByZC1hc3NldHMvbW92aWVzLzZlZWEwMmY4LTk1OWUtNGEyOS04ODRmLTA0OWRjMzhlYWZkNi53ZWJw"
+    },
+    {
+        "titulo": "300",
+        "fecha_lanzamiento": "2006",
+        "genero": "Acción | Bélico",
+        "director": "Zack Snyder",
+        "actores": "Gerard Butler, Lena Headey, David Wenham, Dominic West",
+        "poster": "https://resizing.flixster.com/Q3yUH5rCj71Wc2LjYMaEbvSvxGw=/206x305/v2/https://flxt.tmsimg.com/assets/p163191_p_v10_an.jpg"
+    },
+    {
+        "titulo": "Vengadores: La era de Ultrón",
+        "fecha_lanzamiento": "2015",
+        "genero": "Aventuras | Superhéroes | Ciencia Ficción",
+        "director": "Joss Whedon",
+        "actores": "Robert Downey Jr., Chris Evans, Chris Hemsworth, Scarlett Johansson, Jeremy Renner, Mark Ruffalo",
+        "poster": "https://resizing.flixster.com/QHs3DWI2bjhs4cj2EO1-RDGKMtw=/206x305/v2/https://flxt.tmsimg.com/assets/p10745606_p_v10_aq.jpg"
+    },
+    {
+        "titulo": "¿Cuándo llegamos?",
+        "fecha_lanzamiento": "2005",
+        "genero": "Comedia | Cine familiar",
+        "director": "Brian Levant",
+        "actores": "Ice Cube, Nia Long, Aleisha Allen, Philip Bolden",
+        "poster": "https://resizing.flixster.com/22_3HUtjsiUAQIsgLHlP_Yup4mE=/206x305/v2/https://flxt.tmsimg.com/assets/p35412_p_v10_aj.jpg"
     }
 ]

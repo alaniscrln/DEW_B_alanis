@@ -3,7 +3,6 @@ let jugador = new Jugador(localStorage.getItem("jugador1"), 0);
 //let jugador = jugadores[0];
 let partida = new Partida(rondas, jugador);
 
-
 function crearTeclas() {
     //fragment es un doc pequeño donde se guarda mucha info, para cuando
     //ya este todo guardado en ella, empujarlo de una al html.
@@ -65,7 +64,7 @@ function crearTeclas() {
 
         fragment.appendChild(btn);  // guardamos en fragment cada btn de letra
 
-        if (letra == "p" || letra == "ñ") {   // mostrar teclado en filas
+        if (letra == "p" || letra == "ñ" || letra == "9") {   // mostrar teclado en filas
             fragment.appendChild(document.createElement("br"));
         }
 
@@ -271,8 +270,9 @@ function cargarInfo() {
 
 }
 
-
-
+const quitarAcentos = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } 
 
 function init() {
 
@@ -286,7 +286,11 @@ function init() {
 
             let pelicula = peliculas[(Math.random() * peliculas.length) | 0];   //index aleatorio
 
-            guardarPalabra(pelicula.titulo.toLowerCase());
+            let tituloSinAcento = quitarAcentos(pelicula.titulo.toLowerCase());
+
+            //me falta evitar q se repitan las pelis en la misma partida
+
+            guardarPalabra(tituloSinAcento);
             pintarGuiones();
             pintarPalabraMostrada();
             pintarDatosPelicula(pelicula.poster, pelicula.titulo, pelicula.fecha_lanzamiento,

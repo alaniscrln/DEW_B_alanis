@@ -86,7 +86,7 @@ class Productos {
 }
 
 class Partida {
-    constructor(numRondas, jugador1, jugador2){
+    constructor(numRondas, jugador1, jugador2) {
         this.numRondas = numRondas;
         this.rondaActual = 1;
         this.jugador1 = jugador1;
@@ -94,16 +94,16 @@ class Partida {
         this.errores = 0;
     }
 
-    sumarError(){
+    sumarError() {
         this.errores++;
     }
 
-    resetearErrores(){
+    resetearErrores() {
         this.errores = 0;
     }
 
-    siguienteRonda(){
-            this.rondaActual++;
+    siguienteRonda() {
+        this.rondaActual++;
     }
 
 }
@@ -128,18 +128,6 @@ function guardarPalabra(p) {
     }
 }
 
-// escoger una palabra del array
-function palabraRandom() {
-    let palabra;
-    try {
-        palabra = listaPalabras[Math.random() * (listaPalabras.length - 0) + 0];
-        palabraJugada = palabra.getTitulo();
-        return true;
-    } catch (error) {
-        return false;
-    }
-}
-
 // comprobar que existe la letra en la palabra y guardar las pos donde se encuentra
 function posicionLetra(letra) {
 
@@ -155,18 +143,17 @@ function posicionLetra(letra) {
 // pintar los guiones en palabraMostrada
 function pintarGuiones() {
 
-    // tener en cuenta las tildes. todo lo q no sea una letra se pintara tal cual
-    // \W -> todo lo q no sea alfanumerico
-
-
     palabraMostrada = "";
+
+    let patt = /\W/;
     for (let i = 0; i < palabraJugada.length; i++) {
-        if (palabraJugada.charAt(i) != ' ') {
-            palabraMostrada += "-";
+        if ( palabraJugada.charAt(i).match(patt) != null ) {   //si no es alfanumerico, lo muestra
+            palabraMostrada += palabraJugada.charAt(i);
         } else {
-            palabraMostrada += " ";
+            palabraMostrada += "-";
         }
     }
+
 }
 
 // cambiar un char específico de un string
