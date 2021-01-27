@@ -38,7 +38,7 @@ class Sim {
         let item = room.items[Math.floor(Math.random() * room.items.length)];
         //hora en formato 24 hh:mm
         let datetime: string = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "numeric", minute: "numeric" });
-        this.status = item.action + " " + item.name + " in the " + room.name + " since " + datetime + ".";
+        this.status = item.action + " " + item.name + " in the " + room.name + " since " + datetime + "h.";
     }
 
     getName(): string {
@@ -54,7 +54,7 @@ class Sim {
 function createRoomsWithItems(): void {
     //bedroom
     let bed: Item = { name: "the bed", action: "sleeping in" };
-    let wardrobe: Item = { name: "the dressing room", action: "folding clothes" };
+    let wardrobe: Item = { name: "the dressing room", action: "changing clothes in" };
     let desk: Item = { name: "the desk", action: " doing homework in" };
     let diary: Item = { name: "the diary", action: "writing on" };
 
@@ -63,7 +63,7 @@ function createRoomsWithItems(): void {
     //salón
     let windows: Item = { name: "the window", action: "looking through" };
     let book: Item = { name: "a book", action: "reading" };
-    let tv: Item = { name: " TV ", action: " watching " };
+    let tv: Item = { name: " TV ", action: "watching" };
     let couch: Item = { name: " the couch", action: "laying on" };
 
     let livingRoom: Room = { name: "living room", items: new Array(windows, book, tv, couch, desk) };
@@ -113,6 +113,7 @@ function createSims(): void {
     sims.push(alanis);
 }
 
+//mostrar los sims en la página
 function showSims(): void {
     let simsContainer: HTMLElement = document.getElementById("sims-container");
     simsContainer.setAttribute("size", sims.length.toString()); //para  mostrar bien todos los sims
@@ -122,16 +123,19 @@ function showSims(): void {
     });
 }
 
+//mostrar las habitaciones en la página
 function showRooms(): void {
     let roomsContainer: HTMLElement = document.getElementById("rooms-container");
 
     rooms.forEach(room => {
-        roomsContainer.innerHTML += "<div class='row' id= '" + room.name + "'><button class='btn btn-primary btn-large'>" + room.name + "</button></div>";
+        roomsContainer.innerHTML += "<button class='btn btn-primary btn-lg btn-block' id= '" + room.name + "'>" + room.name + "</button>";
     });
 }
 
-//metodo para establecer el estado del primer sim seleccionado (necesario para la selección múltiple de sims)
+//método para establecer el estado del primer sim seleccionado (necesario para la selección múltiple de sims)
 function setSimStatus(selectedOptions: HTMLCollectionOf<HTMLOptionElement>, room: Room): Sim {
+    if(selectedOptions[0] == undefined) alert("First you have to choose a sim!");
+    
     let idSelectedSim: string = selectedOptions[0].value;
 
     let selectedSim: Sim;
@@ -172,12 +176,12 @@ function setRoomEvent(): void {
                 }
 
                 let statusList: HTMLElement = document.getElementById("status-list");
-                statusList.innerHTML += "<p>" + selectedSims + firstSelectedSim.getName() + " are " + firstSelectedSim.getStatus() + "</p>";
+                statusList.innerHTML += "<h5 class='text-secondary'>" + selectedSims + firstSelectedSim.getName() + " are " + firstSelectedSim.getStatus() + "</h5> <hr>";
             } else {  //un sim seleccionado
                 let selectedSim: Sim = setSimStatus(selectedOptions, room);
 
                 let statusList: HTMLElement = document.getElementById("status-list");
-                statusList.innerHTML += "<p>" + selectedSim.getName() + " is " + selectedSim.getStatus() + "</p>";
+                statusList.innerHTML += "<h5 class='text-secondary'>" + selectedSim.getName() + " is " + selectedSim.getStatus() + "</h5> <hr>";
             }
 
         });
@@ -186,12 +190,22 @@ function setRoomEvent(): void {
 
 }
 
+//para limpiar el div de los estados
+function setClearEvent() :void {
+    let clearBtn : HTMLElement = document.getElementById("clear-btn");
+    clearBtn.addEventListener("click", ()=>{
+        let statusList : HTMLElement = document.getElementById("status-list");
+        statusList.innerHTML= "";
+    });
+}
+
 function init(): void {
     createRoomsWithItems();
     createSims();
     showSims();
     showRooms();
     setRoomEvent();
+    setClearEvent();
 }
 
 window.addEventListener("load", init);

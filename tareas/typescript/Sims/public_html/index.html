@@ -7,18 +7,21 @@
     <title>Sims</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
 <body>
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Sims Simulator</h1>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <select multiple class="form-control" id="sims-container"></select>
+                <select multiple class="custom-select custom-select-lg" id="sims-container"></select>
             </div>
             <div class="col-4" id="rooms-container"></div>
-            <div class="col-4" id="status-list">
-
+            <div class="col-4">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" id="clear-btn">Clear</button>
+                <div class="border border-primary rounded bg-light" id="status-list">
             </div>
         </div>
     </div>

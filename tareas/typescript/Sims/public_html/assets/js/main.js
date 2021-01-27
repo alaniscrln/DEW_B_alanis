@@ -20,7 +20,7 @@ var Sim = /** @class */ (function () {
         var item = room.items[Math.floor(Math.random() * room.items.length)];
         //hora en formato 24 hh:mm
         var datetime = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "numeric", minute: "numeric" });
-        this.status = item.action + " " + item.name + " in the " + room.name + " since " + datetime + ".";
+        this.status = item.action + " " + item.name + " in the " + room.name + " since " + datetime + "h.";
     };
     Sim.prototype.getName = function () {
         return this.name;
@@ -34,14 +34,14 @@ var Sim = /** @class */ (function () {
 function createRoomsWithItems() {
     //bedroom
     var bed = { name: "the bed", action: "sleeping in" };
-    var wardrobe = { name: "the dressing room", action: "folding clothes" };
+    var wardrobe = { name: "the dressing room", action: "changing clothes in" };
     var desk = { name: "the desk", action: " doing homework in" };
     var diary = { name: "the diary", action: "writing on" };
     var bedroom = { name: "bedroom", items: new Array(bed, wardrobe, desk, diary) };
     //salón
     var windows = { name: "the window", action: "looking through" };
     var book = { name: "a book", action: "reading" };
-    var tv = { name: " TV ", action: " watching " };
+    var tv = { name: " TV ", action: "watching" };
     var couch = { name: " the couch", action: "laying on" };
     var livingRoom = { name: "living room", items: new Array(windows, book, tv, couch, desk) };
     //cocina
@@ -82,6 +82,7 @@ function createSims() {
     sims.push(adrian);
     sims.push(alanis);
 }
+//mostrar los sims en la página
 function showSims() {
     var simsContainer = document.getElementById("sims-container");
     simsContainer.setAttribute("size", sims.length.toString()); //para  mostrar bien todos los sims
@@ -89,14 +90,17 @@ function showSims() {
         simsContainer.innerHTML += "<option value='" + sim.getId() + "'>" + sim.getName() + "</option>";
     });
 }
+//mostrar las habitaciones en la página
 function showRooms() {
     var roomsContainer = document.getElementById("rooms-container");
     rooms.forEach(function (room) {
-        roomsContainer.innerHTML += "<div class='row' id= '" + room.name + "'><button class='btn btn-primary btn-large'>" + room.name + "</button></div>";
+        roomsContainer.innerHTML += "<button class='btn btn-primary btn-lg btn-block' id= '" + room.name + "'>" + room.name + "</button>";
     });
 }
-//metodo para establecer el estado del primer sim seleccionado (necesario para la selección múltiple de sims)
+//método para establecer el estado del primer sim seleccionado (necesario para la selección múltiple de sims)
 function setSimStatus(selectedOptions, room) {
+    if (selectedOptions[0] == undefined)
+        alert("First you have to choose a sim!");
     var idSelectedSim = selectedOptions[0].value;
     var selectedSim;
     sims.forEach(function (sim) {
@@ -135,14 +139,22 @@ function setRoomEvent() {
                     _loop_1(i);
                 }
                 var statusList = document.getElementById("status-list");
-                statusList.innerHTML += "<p>" + selectedSims_1 + firstSelectedSim_1.getName() + " are " + firstSelectedSim_1.getStatus() + "</p>";
+                statusList.innerHTML += "<h5 class='text-secondary'>" + selectedSims_1 + firstSelectedSim_1.getName() + " are " + firstSelectedSim_1.getStatus() + "</h5> <hr>";
             }
             else { //un sim seleccionado
                 var selectedSim = setSimStatus(selectedOptions, room);
                 var statusList = document.getElementById("status-list");
-                statusList.innerHTML += "<p>" + selectedSim.getName() + " is " + selectedSim.getStatus() + "</p>";
+                statusList.innerHTML += "<h5 class='text-secondary'>" + selectedSim.getName() + " is " + selectedSim.getStatus() + "</h5> <hr>";
             }
         });
+    });
+}
+//para limpiar el div de los estados
+function setClearEvent() {
+    var clearBtn = document.getElementById("clear-btn");
+    clearBtn.addEventListener("click", function () {
+        var statusList = document.getElementById("status-list");
+        statusList.innerHTML = "";
     });
 }
 function init() {
@@ -151,5 +163,6 @@ function init() {
     showSims();
     showRooms();
     setRoomEvent();
+    setClearEvent();
 }
 window.addEventListener("load", init);
