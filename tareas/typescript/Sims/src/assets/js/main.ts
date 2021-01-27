@@ -25,15 +25,20 @@ class Sim {
 
     //devuelve el estado actual del sim
     getStatus(): string {
-        return this.name + " is " + this.status;
+        return this.status;
     }
 
-    //establece el estado del sim
-    setStatus(room: Room) {
+    //establece el estado del sim por string (para selección múltiple de sims)
+    setStatus(status: string) {
+        this.status = status;
+    }
+
+    //establece un estado aleatorio del sim
+    setRandomStatus(room: Room) {
         let item = room.items[Math.floor(Math.random() * room.items.length)];
         //hora en formato 24 hh:mm
         let datetime: string = new Date().toLocaleTimeString('en-US', { hour12: false, hour: "numeric", minute: "numeric" });
-        this.status = item.action + " " + item.name + " at the " + room.name + " since " + datetime + ".";
+        this.status = item.action + " " + item.name + " in the " + room.name + " since " + datetime + ".";
     }
 
     getName(): string {
@@ -49,7 +54,7 @@ class Sim {
 function createRoomsWithItems(): void {
     //bedroom
     let bed: Item = { name: "the bed", action: "sleeping in" };
-    let wardrobe: Item = { name: "the wardrobe", action: "folding clothes" };
+    let wardrobe: Item = { name: "the dressing room", action: "folding clothes" };
     let desk: Item = { name: "the desk", action: " doing homework in" };
     let diary: Item = { name: "the diary", action: "writing on" };
 
@@ -65,7 +70,7 @@ function createRoomsWithItems(): void {
 
     //cocina
     let diningTable: Item = { name: "the dining table", action: "eating mac'n'cheese at" };
-    let fridge: Item = { name: "the fridge", action: "looking for food at" };
+    let fridge: Item = { name: "the fridge", action: "looking for food in" };
     let trashCan: Item = { name: "the trash can", action: "throwing something in" };
     let dishwasher: Item = { name: "the dishwasher", action: "putting the dishes on" };
 
@@ -110,11 +115,11 @@ function createSims(): void {
 
 function showSims(): void {
     let simsContainer: HTMLElement = document.getElementById("sims-container");
+    simsContainer.setAttribute("size", sims.length.toString()); //para  mostrar bien todos los sims
 
     sims.forEach(sim => {
         simsContainer.innerHTML += "<option value='" + sim.getId() + "'>" + sim.getName() + "</option>";
     });
-
 }
 
 function showRooms(): void {
@@ -122,31 +127,58 @@ function showRooms(): void {
 
     rooms.forEach(room => {
         roomsContainer.innerHTML += "<div class='row' id= '" + room.name + "'><button class='btn btn-primary btn-large'>" + room.name + "</button></div>";
-        //setRoomEvent(room);
     });
-
 }
 
-function setRoomEvent(): void {
+//metodo para establecer el estado del primer sim seleccionado (necesario para la selección múltiple de sims)
+function setSimStatus(selectedOptions: HTMLCollectionOf<HTMLOptionElement>, room: Room): Sim {
+    let idSelectedSim: string = selectedOptions[0].value;
 
+    let selectedSim: Sim;
+    sims.forEach(sim => {
+        if (idSelectedSim == sim.getId()) {
+            selectedSim = sim;
+            selectedSim.setRandomStatus(room);
+        }
+    });
+    return selectedSim;
+}
+
+//agregar evento a los botones de las habitaciones
+function setRoomEvent(): void {
     rooms.forEach(room => {
         let btn: HTMLElement = document.getElementById(room.name);
         btn.addEventListener("click", () => {
-            //cada vez que se pulse un btn de habitación, cojo al sim seleccionado del array,
+            //cada vez que se pulse un btn de habitación, cojo al sim(s) seleccionado(s) del array,
             //seteo el estado del sim y lo empujo al div de status-list
             let selectElem: HTMLSelectElement = document.getElementById("sims-container") as (HTMLSelectElement);
-            let idSelectedSim: string = selectElem.options[selectElem.selectedIndex].value;
+            let selectedOptions: HTMLCollectionOf<HTMLOptionElement> = selectElem.selectedOptions;
 
-            let selectedSim: Sim;
-            sims.forEach(sim => {
-                if (idSelectedSim == sim.getId()) {
-                    selectedSim = sim;
-                    selectedSim.setStatus(room);
+            if (selectedOptions.length > 1) { // selección múltiple de sims
+                //seteo el estado del primer sim seleccionado, para luego copiar 
+                //ese estado a los demás sims seleccionados
+                let firstSelectedSim: Sim = setSimStatus(selectedOptions, room);
+
+                let otherSelectedSim: Sim;
+                let selectedSims: string = "";
+                for (let i: number = 1; i < selectedOptions.length; i++) {
+                    sims.forEach(sim => {
+                        if (selectedOptions[i].value == sim.getId()) {
+                            otherSelectedSim = sim;
+                            otherSelectedSim.setStatus(firstSelectedSim.getStatus());
+                            selectedSims += otherSelectedSim.getName() + " and ";
+                        }
+                    });
                 }
-            });
 
-            let statusList: HTMLElement = document.getElementById("status-list");
-            statusList.innerHTML += "<p>" + selectedSim.getStatus() + "</p>";
+                let statusList: HTMLElement = document.getElementById("status-list");
+                statusList.innerHTML += "<p>" + selectedSims + firstSelectedSim.getName() + " are " + firstSelectedSim.getStatus() + "</p>";
+            } else {  //un sim seleccionado
+                let selectedSim: Sim = setSimStatus(selectedOptions, room);
+
+                let statusList: HTMLElement = document.getElementById("status-list");
+                statusList.innerHTML += "<p>" + selectedSim.getName() + " is " + selectedSim.getStatus() + "</p>";
+            }
 
         });
 
