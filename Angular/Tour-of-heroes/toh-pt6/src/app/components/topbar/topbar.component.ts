@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
-
+  title = "Tour of Heroes";
   constructor() { }
 
   ngOnInit(): void {
   }
-  title = "Tour of Heroes";
+  
 }

@@ -4,7 +4,7 @@
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   width: 195px;
-  height: 16px;
+  height: 26px;
   padding: 5px;
   background-color: white;
   cursor: pointer;
@@ -36,4 +36,7 @@
 ul.search-result {
   margin-top: 0;
   padding-left: 0;
+  z-index: 1;
+
 }
+
