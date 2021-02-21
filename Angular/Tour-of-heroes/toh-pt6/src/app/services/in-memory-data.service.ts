@@ -8,8 +8,8 @@ import { Hero } from '../interfaces/hero';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
-      { id: 11, name: 'Dr Nice', birthday: new Date("1992-01-12"), description: "bla bla bla", avatar:"aaa", color: "caca" }/*,
-      { id: 12, name: 'Narco', birthday: new Date("1994-05-04"), description: "baaaaaaaaaaaa", avatar:"xsssaa", color: "rojo"  },
+      { id: 11, name: 'Dr Nice', birthday: "1992-01-12", age: 0, description: "bla bla bla", avatar:"https://comps.canstockphoto.es/negro-h%C3%A9roe-s%C3%BAper-caricatura-hombre-clip-art-vectorial_csp68129366.jpg", color: "#61e864" },
+      { id: 12, name: 'Narco', birthday: "1994-05-04", age: 0, description: "baaaaaaaaaaaa", avatar:"xsssaa", color: "#a242d6" }/*,
       { id: 13, name: 'Bombasto' },
       { id: 14, name: 'Celeritas' },
       { id: 15, name: 'Magneta' },
@@ -19,7 +19,12 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 19, name: 'Magma' },
       { id: 20, name: 'Tornado' }*/
     ];
-    return {heroes};
+    const villains = [
+      { id: 13, name: 'Wawawiwa', birthday: "1982-12-02", age: 0, description: "bla bla bla", avatar:"aaaaaa", color: "#61e864" },
+      { id: 14, name: 'Capitán Tristeza', birthday: "1999-05-04", age: 0, description: "bsssaaaaaaa", avatar:"xaaaaa", color: "#a242d6" }
+
+    ];
+    return {heroes, villains};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

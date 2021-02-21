@@ -1,18 +1,17 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+label, .datoFijo {
   display: block;
-  width: 3em;
-  margin: .5em 0;
+  width: 4em;
   color: #607D8B;
   font-weight: bold;
 }
 input {
   height: 2em;
+  width: 15em;
   font-size: 1em;
-  padding-left: .4em;
 }
 button {
-  margin-top: 20px;
+  margin: 20px 10px;
   font-family: Arial, sans-serif;
   background-color: #eee;
   border: none;
@@ -27,4 +26,35 @@ button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
+}
+
+img {
+  border-radius: 15px;
+  height: 65vh;
+  margin-bottom: 60px;
+}
+
+#component {
+  z-index: 1;
+}
+
+#form{
+  padding: 0px 60px;
+}
+
+#nameBox{
+    padding: 10px;
+    text-align: center;
+    min-height: 40px;
+    max-width: 240px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#name{
+  background: inherit;
+  background-clip: text;
+  color: transparent;
+  filter: invert(1) grayscale(1) contrast(9);
+  font-weight: bold;
 }

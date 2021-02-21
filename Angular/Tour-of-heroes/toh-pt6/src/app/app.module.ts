@@ -16,6 +16,7 @@ import { HeroSearchComponent } from './components/hero-search/hero-search.compon
 import { MessagesComponent } from './components/messages/messages.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { VillainDetailComponent } from './components/villain-detail/villain-detail.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MessagesComponent,
     HeroSearchComponent,
     TopbarComponent,
-    FooterComponent
+    FooterComponent,
+    VillainDetailComponent
   ],
   bootstrap: [ AppComponent ]
 })
