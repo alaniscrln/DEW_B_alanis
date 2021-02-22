@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top bg-light" role="navigation">
+<nav class="navbar navbar-expand-lg fixed-top" role="navigation">
   <a class="navbar-brand" routerLink="/dashboard">{{title}}</a>
 
   <div class="dropdown d-block d-lg-none ">
@@ -9,6 +9,7 @@
 
       <div class="dropdown-menu">
           <a class="dropdown-item" routerLink="/heroes">Heroes</a>
+          <a class="dropdown-item" routerLink="/villains">Villains</a>
           <a class="dropdown-item">
             <app-messages></app-messages>
           </a>
@@ -20,51 +21,17 @@
       <li class="list-inline-item">
         <a routerLink="/heroes">Heroes</a>
       </li>
+      <li class="list-inline-item">
+        <a routerLink="/villains">Villains</a>
+      </li>
       <li  class="list-inline-item">
         <a>
           <app-messages></app-messages>
         </a>
       </li>    
   </ul>
-  
+  <app-search class="ml-auto"></app-search>
 </nav>
-<div class="" style="float: right;">
-  <app-hero-search></app-hero-search>
-  
-</div>
+
 <br><br>
 
-
-
-
-
-
-
-
-<!--
-
-
-<nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" routerLink="/dashboard">{{title}}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li>
-        <a routerLink="/heroes">Heroes</a>
-      </li>
-      <li class="nav-item">
-        <a>
-          <app-messages></app-messages>
-        </a>
-
-      </li>
-    </ul>
-  </div>
-  <app-hero-search></app-hero-search>
-</nav>
-
--->

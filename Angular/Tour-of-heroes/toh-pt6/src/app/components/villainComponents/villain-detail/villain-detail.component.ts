@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 
-import {Villain} from '../../interfaces/villain';
-import {VillainService} from '../../services/villain.service';
+import {Villain} from '../../../interfaces/villain';
+import {VillainService} from '../../../services/villain.service';
 
 @Component({
   selector: 'app-villain-detail',
   templateUrl: './villain-detail.component.html',
-  styleUrls: ['./villain-detail.component.css']
+  styleUrls: ['./../../css/detail.css']
 })
 export class VillainDetailComponent implements OnInit {
 

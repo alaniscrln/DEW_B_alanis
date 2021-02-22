@@ -1,8 +1,8 @@
 /* MessagesComponent's private CSS styles */
 #accion {
-  color: red;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-weight: bold;
+  color: #fffb6c;
 }
 
 span{
@@ -10,20 +10,7 @@ span{
   padding-right: 5px;
 }
 
-
-
-
-
-button.clear {
-  font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #eee;
-  margin-bottom: 12px;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #cfd8dc;
+#mensaje{
+  color: white;
+  font-style: oblique;
 }

@@ -1,0 +1,19 @@
+<div id="search-component" class="dropdown">
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Buscar..." />
+
+    <ul class="search-result">
+        <li *ngFor="let hero of heroes$ | async">
+            <a routerLink="/hero-detail/{{hero.id}}" class="">
+                {{hero.name}}
+            </a>
+        </li>
+        <li *ngFor="let villain of villains$ | async">
+            <a routerLink="/villain-detail/{{villain.id}}" class="">
+                {{villain.name}}
+            </a>
+        </li>
+    </ul>
+
+
+
+</div>

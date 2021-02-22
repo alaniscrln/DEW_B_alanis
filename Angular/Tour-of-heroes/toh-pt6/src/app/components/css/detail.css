@@ -1,4 +1,3 @@
-/* HeroDetailComponent's private CSS styles */
 label, .datoFijo {
     display: block;
     width: 4em;
@@ -32,10 +31,6 @@ label, .datoFijo {
     border-radius: 15px;
     height: 65vh;
     margin-bottom: 60px;
-  }
-  
-  #component {
-    z-index: 1;
   }
   
   #form{

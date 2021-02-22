@@ -1,10 +1,9 @@
-
-
 nav{
   top: 0;
   z-index: 0;
   position: fixed;
   width: 100%;
+  background-color:#745194;
 }
 nav a {
     padding: 5px 10px;
@@ -15,13 +14,12 @@ nav a {
     border-radius: 4px;
   }
   nav a:visited, a:link {
-    color: #607D8B;
+    color: white;
   }
   nav a:hover {
-    color: #039be5;
-    background-color: #CFD8DC;
+    color: black;
+    background-color: 	#8d6bae;
   }
-  nav a.active {
-    color: #039be5;
-  }
+
+
 

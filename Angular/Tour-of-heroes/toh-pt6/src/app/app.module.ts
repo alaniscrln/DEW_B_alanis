@@ -10,13 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './components/app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
-import { HeroSearchComponent } from './components/hero-search/hero-search.component';
+import { HeroDetailComponent } from './components/heroComponents/hero-detail/hero-detail.component';
+import { HeroesComponent } from './components/heroComponents/heroes/heroes.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { VillainDetailComponent } from './components/villain-detail/villain-detail.component';
+import { VillainDetailComponent } from './components/villainComponents/villain-detail/villain-detail.component';
+import { VillainsComponent } from './components/villainComponents/villains/villains.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
@@ -38,10 +39,11 @@ import { VillainDetailComponent } from './components/villain-detail/villain-deta
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent,
     TopbarComponent,
     FooterComponent,
-    VillainDetailComponent
+    VillainDetailComponent,
+    VillainsComponent,
+    SearchComponent
   ],
   bootstrap: [ AppComponent ]
 })

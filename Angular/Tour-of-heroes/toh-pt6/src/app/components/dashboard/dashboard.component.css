@@ -29,17 +29,24 @@ h4 {
 .module {
   padding: 20px;
   text-align: center;
-  color: #eee;
+  color: #eee;/*
   max-height: 120px;
-  min-width: 120px;
+  min-width: 120px;*/
   border-radius: 5px;
 }
 
-.hero{
+.people{
   background: inherit;
   background-clip: text;
   color: transparent;
   filter: invert(1) grayscale(1) contrast(9);
+}
+
+.bg-col{
+  padding: 20px;
+  background-color: #bac2da42;
+  height: 100%;
+  border-radius: 8px;
 }
 
 .module:hover {

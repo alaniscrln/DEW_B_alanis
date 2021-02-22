@@ -52,9 +52,23 @@ export class VillainService {
     );
   }
 
+  searchVillains(term: string): Observable<Villain[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Villain[]>(`${this.villainsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found matching "${term}"`) :
+         this.log(`no matching "${term}"`)),
+      catchError(this.handleError<Villain[]>('searchVillains', []))
+    );
+  }
+
   ///////////////////////////////////////
 
   addVillain(villain: Villain): Observable<Villain> {
+    villain.color = "#E0E0E0";
     return this.http.post<Villain>(this.villainsUrl, villain, this.httpOptions).pipe(
       tap((newVillain: Villain) => this.log(`added villain w/ id=${newVillain.id}`)),
       catchError(this.handleError<Villain>('addVillain'))
