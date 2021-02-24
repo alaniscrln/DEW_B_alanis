@@ -64,7 +64,4 @@ export class SearchComponent implements OnInit {
       switchMap((term: string) => this.villainService.searchVillains(term)),
     );
   }
-
-
-
 }

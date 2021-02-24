@@ -1,25 +1,26 @@
 nav{
   top: 0;
-  z-index: 0;
+  z-index: 1;
   position: fixed;
   width: 100%;
   background-color:#745194;
 }
 nav a {
-    padding: 5px 10px;
-    text-decoration: none;
-    margin-right: 10px;
-    margin-top: 10px;
-    display: inline-block;
-    border-radius: 4px;
-  }
-  nav a:visited, a:link {
-    color: white;
-  }
-  nav a:hover {
-    color: black;
-    background-color: 	#8d6bae;
-  }
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: white;
+}
+nav a:hover {
+  color: black;
+  background-color: 	#8d6bae;
+}
 
-
-
+.dropdown-menu{
+  background-color: #745194;
+}

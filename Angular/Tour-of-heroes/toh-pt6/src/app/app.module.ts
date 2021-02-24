@@ -19,6 +19,11 @@ import { VillainDetailComponent } from './components/villainComponents/villain-d
 import { VillainsComponent } from './components/villainComponents/villains/villains.component';
 import { SearchComponent } from './components/search/search.component';
 
+import { HeroService } from './services/hero.service';
+import { VillainService } from './services/villain.service';
+import { MessageService } from './services/message.service';
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -33,6 +38,11 @@ import { SearchComponent } from './components/search/search.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
+  providers: [
+    HeroService,
+    VillainService,
+    MessageService
+  ],
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -45,6 +55,6 @@ import { SearchComponent } from './components/search/search.component';
     VillainsComponent,
     SearchComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

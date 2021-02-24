@@ -27,7 +27,6 @@ export class VillainsComponent implements OnInit {
     if (!name) return;
     this.villainService.addVillain({ name } as Villain)
       .subscribe(villain => this.villains.push(villain));
-
   }
 
   delete(villain: Villain): void {

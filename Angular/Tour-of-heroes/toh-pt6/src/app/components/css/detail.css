@@ -1,55 +1,60 @@
 label, .datoFijo {
-    display: block;
-    width: 4em;
-    color: #607D8B;
-    font-weight: bold;
-  }
-  input {
-    height: 2em;
-    width: 15em;
-    font-size: 1em;
-  }
-  button {
-    margin: 20px 10px;
-    font-family: Arial, sans-serif;
-    background-color: #eee;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #cfd8dc;
-  }
-  button:disabled {
-    background-color: #eee;
-    color: #ccc;
-    cursor: auto;
-  }
-  
-  img {
-    border-radius: 15px;
-    height: 65vh;
-    margin-bottom: 60px;
-  }
-  
-  #form{
-    padding: 0px 60px;
-  }
-  
-  #nameBox{
-      padding: 10px;
-      text-align: center;
-      min-height: 40px;
-      max-width: 240px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-  }
-  
-  #name{
-    background: inherit;
-    background-clip: text;
-    color: transparent;
-    filter: invert(1) grayscale(1) contrast(9);
-    font-weight: bold;
-  }
+  display: block;
+  color: #607D8B;
+  font-weight: bold;
+}
+
+input {
+  height: 2em;
+  width: 15em;
+  font-size: 1em;
+}
+
+textarea{
+  width: 15em;
+  font-size: 1em;
+}
+
+button {
+  margin: 20px 10px;
+  font-family: Arial, sans-serif;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: auto;
+}
+
+img {
+  border-radius: 15px;
+  height: 66vh;
+  margin-bottom: 60px;
+}
+
+#form{
+  padding: 0px 60px;
+}
+
+#nameBox{
+    padding: 10px;
+    text-align: center;
+    min-height: 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#name{
+  background: inherit;
+  background-clip: text;
+  color: transparent;
+  filter: invert(1) grayscale(1) contrast(9);
+  font-weight: bold;
+}

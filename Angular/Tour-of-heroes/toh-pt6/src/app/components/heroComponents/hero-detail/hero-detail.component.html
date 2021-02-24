@@ -1,16 +1,14 @@
 <div *ngIf="hero" id="component">
-  <h2>Hero details</h2>
-  
+  <div id="nameBox" class="text-center" style="background-color: {{hero.color}};">
+    <div id="name">HERO '{{hero.name | uppercase}}' DETAILS</div>
+  </div>
+  <hr>
   <div class="row text-center">
     <div class="col-xs-12 col-sm-12 offset-md-3 col-md-3 offset-lg-3 col-lg-3 offset-xl-3 col-xl-3">
       <img id="avatar" src={{hero.avatar}} alt="">
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" id="form">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-left" id="form">
       <div>
-        <div id="nameBox" class="text-center" style="background-color: {{hero.color}};">
-          <div id="name">{{hero.name | uppercase}}</div> 
-        </div>
-        <hr>
         <div class="datoFijo"><span>ID: </span>{{hero.id}}</div>
         <label>name:
           <input [(ngModel)]="hero.name" placeholder="name" />
@@ -20,7 +18,7 @@
         </label>
         <div class="datoFijo"><span>age: </span>{{hero.age}}</div>
         <label>description:
-          <input [(ngModel)]="hero.description" placeholder="description" />
+          <textarea [(ngModel)]="hero.description" rows="5"></textarea>
         </label>
         <label>avatar:
           <input [(ngModel)]="hero.avatar" placeholder="avatar" />
@@ -31,33 +29,9 @@
       </div>
       <div class="text-left">
         <button class="btn-lg" (click)="goBack()">go back</button>
-        <button class="btn-lg" (click)="save()">save</button>  
+        <button class="btn-lg" (click)="save()">save</button>
       </div>
       <br><br><br><br>
     </div>
   </div>
-
-
-
-
-  <!--
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
-    <label>birthday:
-      <input [(ngModel)]="hero.birthday" placeholder="birthday"/>
-    </label>
-    <label>description:
-      <input [(ngModel)]="hero.description" placeholder="description"/>
-    </label>
-    <label>avatar:
-      <input [(ngModel)]="hero.avatar" placeholder="avatar"/>
-    </label>
-    <label>color:
-      <input [(ngModel)]="hero.color" placeholder="color"/>
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>-->
 </div>

@@ -24,8 +24,6 @@ export class VillainDetailComponent implements OnInit {
     this.getVillain();
   }
 
-
-  
   getVillain(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.villainService.getVillain(id)
@@ -33,7 +31,6 @@ export class VillainDetailComponent implements OnInit {
         this.villain = villain;
         this.setAge();
       });    
-
   }
 
   goBack(): void {
